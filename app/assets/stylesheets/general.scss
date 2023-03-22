@@ -5,6 +5,7 @@ $robotoFonts: 'Roboto', sans-serif;
   padding: 7px 7px 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
+  font-family: $robotoFonts;
 }
 
 #error_explanation h2 {
@@ -15,11 +16,13 @@ $robotoFonts: 'Roboto', sans-serif;
   margin: -7px -7px 0;
   background-color: #c00;
   color: #fff;
+  font-family: $robotoFonts;
 }
 
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+  font-family: $robotoFonts;
 }
 
 .normal-fonts{
