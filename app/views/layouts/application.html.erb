@@ -5,14 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
-</html>
+
+    <ul>
+      <% if user_signed_in? %>
+        <li class="nav-item text-center">
+          <%=link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <i class="fa fa-sign-out nav-icons" aria-hidden="true"></i>
+            <span class="nav-link-text d-block">Logout</span>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item text-center">
+          <%= link_to new_user_session_path, class: "nav-link" do %>
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <span class="nav-link-text d-block">Sign In</span>
+          <% end %>
+          <li>
+      <% end %>  
+    </ul>
+
+       <%= yield %>
+      </body>
+    </html>
