@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @business %>
-
-<div>
-  <%= link_to "Edit this business", edit_business_path(@business) %> |
-  <%= link_to "Back to businesses", businesses_path %>
-
-  <%= button_to "Destroy this business", @business, method: :delete %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <%= render @business %>
+      <div>
+        <%= link_to "Edit this business", edit_business_path(@business) %> |
+        <%= link_to "Back to businesses", businesses_path %>
+        <%= button_to "Destroy this business", @business, method: :delete %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h2 class="text-center heading-fonts">Quaterly Goals</h2>
+      
+    </div>
+  </div>
 </div>
