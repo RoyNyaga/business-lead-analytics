@@ -1,8 +1,11 @@
+$robotoFonts: 'Roboto', sans-serif;
+
 #error_explanation {
   border: 2px solid red;
   padding: 7px 7px 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0; }
+  background-color: #f0f0f0;
+}
 
 #error_explanation h2 {
   text-align: left;
@@ -11,8 +14,25 @@
   font-size: 12px;
   margin: -7px -7px 0;
   background-color: #c00;
-  color: #fff; }
+  color: #fff;
+}
 
 #error_explanation ul li {
   font-size: 12px;
-  list-style: square; }
+  list-style: square;
+}
+
+.normal-fonts{
+  font-family: $robotoFonts;
+  font-weight: 400;
+}
+
+.heading-fonts{
+  font-family: $robotoFonts;
+  font-weight: 700;
+}
+
+label{
+  font-family: $robotoFonts;
+  padding: 10px 0px;
+}
