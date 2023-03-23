@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <%= render @business %>
       <div>
         <%= link_to "Edit this business", edit_business_path(@business) %> |
@@ -8,9 +8,12 @@
         <%= button_to "Destroy this business", @business, method: :delete %>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
       <h2 class="text-center heading-fonts">Quaterly Goals</h2>
-      
+
+    </div>
+    <div class="col-md-2">
+      <h2 class="text-center heading-fonts">Channels</h2>
     </div>
   </div>
 </div>
