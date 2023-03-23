@@ -2,7 +2,7 @@ class ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
-    @business = Business.find_by(id: business_id)
+    @business = Business.find_by(id: params[:channel][:business_id])
 
     respond_to do |format|
       if @channel.save

@@ -8,14 +8,14 @@
         <%= button_to "Destroy this business", @business, method: :delete %>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-7">
       <h2 class="text-center heading-fonts">Quaterly Goals</h2>
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
       <h2 class="text-center heading-fonts">Channels</h2>
-      <%= render "channels/form" %>
-      <%= render partial: "channels/channel", collection: @business.channels %>
+      <%= render "channels/modal" %>
+      <%= render partial: "channels/channel", collection: Channel.all %>
     </div>
   </div>
 </div>
