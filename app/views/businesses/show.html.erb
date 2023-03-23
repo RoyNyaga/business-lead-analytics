@@ -8,12 +8,13 @@
         <%= button_to "Destroy this business", @business, method: :delete %>
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-5">
       <h2 class="text-center heading-fonts">Quaterly Goals</h2>
 
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <h2 class="text-center heading-fonts">Channels</h2>
+      <%= render "channels/form" %>
     </div>
   </div>
 </div>

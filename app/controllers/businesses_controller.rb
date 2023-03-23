@@ -8,6 +8,7 @@ class BusinessesController < ApplicationController
 
   # GET /businesses/1 or /businesses/1.json
   def show
+    @channel.new
   end
 
   # GET /businesses/new

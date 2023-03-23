@@ -1,0 +1,10 @@
+<%= form_with(model: @channel) do |form| %>
+  <div class="f-flex">
+    <%= form.text_field :name, placeholder: "Add new task", class: "" %>
+    <%= form.hidden_field :user_id, value: current_user.id%>
+    <%= form.hidden_field :business_id, value: @business.id%>
+    <%= form.submit "Save" %>
+  </div>
+<% end %>
+
+
