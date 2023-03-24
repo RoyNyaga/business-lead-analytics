@@ -42,8 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_000103) do
     t.float "budget"
     t.float "projected_conversion_rate"
     t.float "projected_revenue"
+    t.string "channels"
+    t.bigint "user_id", null: false
+    t.bigint "business_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_goals_on_business_id"
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "industries", force: :cascade do |t|
@@ -72,4 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_000103) do
   add_foreign_key "businesses", "users"
   add_foreign_key "channels", "businesses"
   add_foreign_key "channels", "users"
+  add_foreign_key "goals", "businesses"
+  add_foreign_key "goals", "users"
 end

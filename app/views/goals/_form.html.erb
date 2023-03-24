@@ -1,0 +1,16 @@
+<%= form_with(model: @goal) do |form| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form.label :quater_name %>
+      <%= form.select :quater_name, Goal::QUATER_OPTIONS, class: "form-control" %>
+    </div>
+
+    <div class="col-md-6">
+      <%= form.label :projected_leads %>
+      <%= form.text_field :projected_leads, class: "form-control" %>
+    </div>
+    <%= form.submit "Save" %>
+    <%= form.hidden_field :business_id, value: @business.id%>
+    <%= form.hidden_field :user_id, value: current_user.id%>
+  </div>
+<% end %>
