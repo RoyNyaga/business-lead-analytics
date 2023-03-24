@@ -16,11 +16,21 @@
       <% end %>
     </div>
     <div class="col-md-2">
-      <h2 class="text-center heading-fonts">Channels</h2>
-      <%= render "channels/modal" %>
-      <% @business.channels.each do |channel| %>
-        <%= render partial: "channels/channel", locals: { channel: channel} %>
-      <% end %>
+      <div>
+        <h4 class="text-center heading-fonts">Channels</h4>
+        <%= render "channels/modal" %>
+        <% @business.channels.each do |channel| %>
+          <%= render partial: "channels/channel", locals: { channel: channel} %>
+        <% end %>
+      </div>
+      
+      <div>
+        <h4 class="text-center heading-fonts">Products</h4>
+        <%= render "products/modal" %>
+        <% @business.products.each do |product| %>
+          <%= render partial: "products/product", locals: { product: product} %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

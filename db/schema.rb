@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_191700) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_24_193944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "businesses", force: :cascade do |t|
     t.string "name"
-    t.string "products"
     t.string "num_of_employees"
     t.bigint "industry_id", null: false
     t.bigint "user_id", null: false

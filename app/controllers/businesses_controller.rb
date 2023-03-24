@@ -10,6 +10,7 @@ class BusinessesController < ApplicationController
   def show
     @channel = Channel.new
     @goal = Goal.new
+    @product = Product.new
   end
 
   # GET /businesses/new

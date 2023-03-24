@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root "pages#dashboard"
   resources :channels
   resources :goals
+  resources :products
 end
