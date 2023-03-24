@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def create
-    @product = Channel.new(channel_params)
+    @product = Product.new(product_params)
     @business = Business.find_by(id: params[:product][:business_id])
 
     respond_to do |format|
