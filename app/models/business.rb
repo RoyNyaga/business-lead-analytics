@@ -4,6 +4,7 @@ class Business < ApplicationRecord
   has_many :channels, dependent: :destroy
   has_many :goals, dependent: :destroy
   has_many :products, dependent: :destroy
+  has_many :weekly_data_entries, dependent: :destroy
 
   validates :name, presence: true
   validates :products, presence: true
