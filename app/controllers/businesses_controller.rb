@@ -9,6 +9,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/1 or /businesses/1.json
   def show
     @channel = Channel.new
+    @goal = Goal.new
   end
 
   # GET /businesses/new

@@ -10,12 +10,14 @@
     </div>
     <div class="col-md-7">
       <h2 class="text-center heading-fonts">Quaterly Goals</h2>
-
+      <%= render "goals/form" %>
     </div>
     <div class="col-md-2">
       <h2 class="text-center heading-fonts">Channels</h2>
       <%= render "channels/modal" %>
-      <%= render partial: "channels/channel", collection: Channel.all %>
+      <% @business.channels.each do |channel| %>
+        <%= render partial: "channels/channel", locals: { channel: channel} %>
+      <% end %>
     </div>
   </div>
 </div>
