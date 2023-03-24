@@ -10,7 +10,10 @@
     </div>
     <div class="col-md-7">
       <h2 class="text-center heading-fonts">Quaterly Goals</h2>
-      <%= render "goals/form" %>
+      <%= render "goals/modal" %>
+      <% @business.goals.each do |goal| %>
+        <%= render partial: "goals/goal", locals: { goal: goal } %>
+      <% end %>
     </div>
     <div class="col-md-2">
       <h2 class="text-center heading-fonts">Channels</h2>
