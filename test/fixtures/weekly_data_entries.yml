@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  goal: one
+  business: one
+  user: one
+  product: one
+  channel: one
+  leads_per_week: 1
+  contacted_leads: 1
+  paid_customers: MyString
+  budget_expences: 1.5
+  revenue: 1.5
+  conversion_rate: 1.5
+
+two:
+  goal: two
+  business: two
+  user: two
+  product: two
+  channel: two
+  leads_per_week: 1
+  contacted_leads: 1
+  paid_customers: MyString
+  budget_expences: 1.5
+  revenue: 1.5
+  conversion_rate: 1.5
