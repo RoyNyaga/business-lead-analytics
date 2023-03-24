@@ -1,4 +1,7 @@
 class GoalsController < ApplicationController
+  before_action :set_goal, only: [:show]
+  def show
+  end
 
   def create
     @goal = Goal.new(goal_params)
@@ -12,7 +15,11 @@ class GoalsController < ApplicationController
     end
   end
 
-  private 
+  private
+
+  def set_goal
+    @goal = Goal.find_by(id: params[:id])
+  end
 
   def goal_params
     params[:goal][:channels] = params[:goal][:channels].join(" -#- ")

@@ -1,0 +1,18 @@
+<div class="container">
+  <h2><%= @goal.quater_name %> Analyses</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <p>Projected Leads: <%= @goal.projected_leads %></p>
+      <p>Budget <%= @goal.budget %></p>
+      <p>Projected Conversion Rate <%= @goal.projected_conversion_rate %></p>
+      <p>Projected Revenue <%= @goal.projected_revenue %></p>
+      <div>
+        <h5 class="heading-fonts">Channels</h5>
+        <% @goal.channels.split("-#-").each do |channel| %>
+          <span><%= channel.strip.capitalize %></span>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
