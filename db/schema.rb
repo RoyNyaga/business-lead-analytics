@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_25_174538) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_142919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_174538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "channel_leads_per_week", default: [], array: true
+    t.date "date"
     t.index ["business_id"], name: "index_weekly_data_entries_on_business_id"
     t.index ["goal_id"], name: "index_weekly_data_entries_on_goal_id"
     t.index ["product_id"], name: "index_weekly_data_entries_on_product_id"
