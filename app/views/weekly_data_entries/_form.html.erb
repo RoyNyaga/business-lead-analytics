@@ -1,43 +1,43 @@
 <%= form_with(model: @weekly_data_entry) do |form| %>
   <div class="row">
-    <div class="col-md-6 p-0">
+    <div class="col-md-6 mx-auto">
       <%= form.label :product %>
       <%= form.collection_select :product_id, @goal.business.products, :id, :name, prompt: true, class: "form-control", required: true %>
     </div>
-    <div class="col-md-6 p-0">
-      <%= form.label :leads_per_week %>
-      <%= form.number_field :leads_per_week, class: "form-control", required: true %>
+    <div class="col-md-6">
+      <%= form.label :date %>
+      <%= form.date_field :date, class: "form-control", required: true %>
     </div>
   </div>
   <div>
-    <h5 class="heading-fonts">Channel Leads Per Week</h5>
+    <h5 class="heading-fonts my-3 text-center">Channel Leads Per Week</h5>
     <div class="row">
       <% @goal.business.channels.each do |channel| %>
         <div class="col-md-4" id="channel-leads-per-week">
           <%= form.label channel.name %>
-          <%= text_field_tag "#{channel.name}" %>
+          <%= number_field_tag "#{channel.name}" %>
         </div>
       <% end %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 p-0">
+    <div class="col-md-6">
       <%= form.label :contacted_leads %>
       <%= form.number_field :contacted_leads, class: "form-control", required: true %>
     </div>
-    <div class="col-md-6 p-0">
+    <div class="col-md-6">
       <%= form.label :paid_customers %>
       <%= form.number_field :paid_customers, class: "form-control", required: true %>
     </div>
-    <div class="col-md-6 p-0">
+    <div class="col-md-6">
       <%= form.label :budget_expences %>
       <%= form.number_field :budget_expences, class: "form-control", required: true %>
     </div>
-    <div class="col-md-6 p-0">
+    <div class="col-md-6">
       <%= form.label :revenue %>
       <%= form.number_field :revenue, class: "form-control", required: true %>
     </div>
-    <div class="col-md-2 p-0">
+    <div class="col-md-2">
       <%= form.submit "Create" %>
     </div>
     <%= form.hidden_field :business_id, value: @goal.business_id%>
