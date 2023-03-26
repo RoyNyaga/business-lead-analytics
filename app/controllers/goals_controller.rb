@@ -1,6 +1,8 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show]
+
   def show
+    @weekly_data_entry = WeeklyDataEntry.new
   end
 
   def create

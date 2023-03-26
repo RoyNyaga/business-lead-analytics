@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_201101) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_25_174538) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,7 +87,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_201101) do
     t.bigint "business_id", null: false
     t.bigint "user_id", null: false
     t.bigint "product_id", null: false
-    t.bigint "channel_id", null: false
     t.integer "leads_per_week"
     t.integer "contacted_leads"
     t.string "paid_customers"
@@ -96,8 +95,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_201101) do
     t.float "conversion_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "channel_leads_per_week", default: [], array: true
     t.index ["business_id"], name: "index_weekly_data_entries_on_business_id"
-    t.index ["channel_id"], name: "index_weekly_data_entries_on_channel_id"
     t.index ["goal_id"], name: "index_weekly_data_entries_on_goal_id"
     t.index ["product_id"], name: "index_weekly_data_entries_on_product_id"
     t.index ["user_id"], name: "index_weekly_data_entries_on_user_id"
@@ -112,7 +111,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_201101) do
   add_foreign_key "products", "businesses"
   add_foreign_key "products", "users"
   add_foreign_key "weekly_data_entries", "businesses"
-  add_foreign_key "weekly_data_entries", "channels"
   add_foreign_key "weekly_data_entries", "goals"
   add_foreign_key "weekly_data_entries", "products"
   add_foreign_key "weekly_data_entries", "users"

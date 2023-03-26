@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :channels
   resources :goals
   resources :products
+  resources :weekly_data_entries
 end
