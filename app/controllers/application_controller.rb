@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if resource.businesses.size == 0
       stored_location_for(resource) || new_business_path
     else
-      stored_location_for(resource) || business_path
+      stored_location_for(resource) || businesses_path
     end
   end
 
