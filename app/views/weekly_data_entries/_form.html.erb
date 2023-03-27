@@ -1,12 +1,19 @@
 <%= form_with(model: @weekly_data_entry) do |form| %>
   <div class="row">
-    <div class="col-md-6 mx-auto">
-      <%= form.label :product %>
-      <%= form.collection_select :product_id, @goal.business.products, :id, :name, prompt: true, class: "form-control", required: true %>
-    </div>
     <div class="col-md-6">
       <%= form.label :date %>
       <%= form.date_field :date, class: "form-control", required: true %>
+    </div>
+  </div>
+  <div>
+    <h5 class="heading-fonts my-3 text-center">Product Leads Per Week</h5>
+    <div class="row">
+      <% @goal.business.products.each do |product| %>
+        <div class="col-md-4" id="channel-leads-per-week">
+          <%= form.label product.name %>
+          <%= number_field_tag "#{product.name}" %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div>
