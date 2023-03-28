@@ -10,29 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@1,200&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-    <ul>
-      <% if user_signed_in? %>
-        <li class="nav-item text-center">
-          <%=link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-            <i class="fa fa-sign-out nav-icons" aria-hidden="true"></i>
-            <span class="nav-link-text d-block">Logout</span>
-          <% end %>
-        </li>
-      <% else %>
-        <li class="nav-item text-center">
-          <%= link_to new_user_session_path, class: "nav-link" do %>
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-            <span class="nav-link-text d-block">Sign In</span>
-          <% end %>
-          <li>
-      <% end %>  
-    </ul>
-
-       <%= yield %>
-      </body>
-    </html>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<%= render "shared/navbar" %>
+<!-- Masthead-->
+<header class="masthead">
+  <div class="container position-relative">
+    <div class="row justify-content-left">
+      <div class="col-xl-6">
+        <div class="text-center text-white">
+          <!-- Page heading-->
+          <h1 class="mb-5">Track, Measure, And
+            Grow Your Business
+            With Client Scoreboards</h1>
+          <div class="row">
+            <!--Get Started Button-->
+            <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton"  type="submit">Get Started</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+<!-- Icons Grid-->
+<section class="features-icons bg-light text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
+          <h3>Informative Insights</h3>
+          <p class="lead mb-0">Unlock the power of data-driven decision making with Client Scoreboard</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
+          <h3>Business Tools</h3>
+          <p class="lead mb-0">Stop guessing and start growing your business with Client Scoreboard's powerful analytics and reporting features.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+          <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
+          <h3>Easy to Use</h3>
+          <p class="lead mb-0">Take control of your business success with Client Scoreboard's easy-to-use platform</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Image Showcases-->
+<section class="showcase my-5">
+  <div class="container p-0">
+    <h2 class="text-center">Our Story</h2>
+  </br>
+  <div class="row g-0">
+    <div class="col-md-6">
+      <p class="lead mb-0">
+        At Client Scoreboard, we're passionate about helping small business owners succeed. Our team of experienced professionals has designed a platform that simplifies the process of tracking leads and conversions, providing valuable insights into business efforts. Our story began when our founder <i><b>Benson Agbortogo</i></b> realized that there was a significant gap in the market for small business owners seeking an easy-to-use platform to track their leads and measure their success. He set out to create a solution that would empower small business owners with the tools and insights they need to grow and thrive.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p class="lead mb-0">
+        With a team of dedicated professionals, Benson developed Client Scoreboard, a web application that combines the power of lead tracking, conversion rate monitoring, and insightful reporting features. Our platform provides small business owners with the ability to make data-driven decisions that drive growth and success.
+        At Client Scoreboard, we believe that every small business deserves the chance to succeed. That's why we're committed to providing our customers with personalized support and expert guidance every step of the way. Whether you're just starting out or looking to take your business to the next level, we're here to help you succeed.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- Testimonials-->
+<section class="testimonials text-center bg-light">
+  <div class="container">
+    <h2 class="mb-5">What people are saying...</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <%=image_tag("testimonials-1.jpg", class: "img-fluid rounded-circle mb-3") %>
+          <h5>Margaret E.</h5>
+          <p class="font-weight-light mb-0">"Since we started using Client Scoreboard, our business has seen a significant increase in leads and conversions. The platform's reporting features have helped us stay on track and make data-driven decisions that have had a real impact on our bottom line."</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <%= image_tag("testimonials-2.jpg", class: "img-fluid rounded-circle mb-3") %>
+          <h5>Fred S.</h5>
+          <p class="font-weight-light mb-0">"As someone who is a handy-man I am not very tech-savvy, I was pleasantly surprised by how easy it was to use Client Scoreboard. The platform is intuitive and straightforward, and I love being able to see all of my leads and conversion data in one place."</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+          <%= image_tag("testimonials-3.jpg", class: "img-fluid rounded-circle mb-3") %>
+          <h5>Sarah W.</h5>
+          <p class="font-weight-light mb-0">"Client Scoreboard has been a game-changer for my business. The insights and data we get from the platform have helped us make more informed decisions and grow our business faster than ever before."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Call to Action-->
+<section class="call-to-action text-white text-center" id="signup">
+  <div class="container position-relative">
+    <div class="row justify-content-center">
+      <div class="col-xl-6">
+        <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+        <!-- Signup form-->
+        <!-- * * * * * * * * * * * * * * *-->
+        <!-- * * SB Forms Contact Form * *-->
+        <!-- * * * * * * * * * * * * * * *-->
+        <!-- This form is pre-integrated with SB Forms.-->
+        <!-- To make this form functional, sign up at-->
+        <!-- https://startbootstrap.com/solution/contact-forms-->
+        <!-- to get an API token!-->
+        <form class="form-subscribe" id="contactFormFooter" data-sb-form-api-token="API_TOKEN">
+          <!-- Email address input-->
+          <div class="row">
+            <div class="col-md-3 mx-auto">
+              <%= link_to "Log In", new_user_session_path, class: "btn btn-primary btn-lg" %>
+            </div>
+          </div>
+          <!-- Submit success message-->
+          <!---->
+          <!-- This is what your users will see when the form-->
+          <!-- has successfully submitted-->
+          <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+              <div class="fw-bolder">Form submission successful!</div>
+              <p>To activate this form, sign up at</p>
+              <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+            </div>
+          </div>
+          <!-- Submit error message-->
+          <!---->
+          <!-- This is what your users will see when there is-->
+          <!-- an error submitting the form-->
+          <div class="d-none" id="submitErrorMessage">
+            <div class="text-center text-danger mb-3">Error sending message!</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Footer-->
+<footer class="footer bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+        <ul class="list-inline mb-2">
+          <li class="list-inline-item"><a href="#!">About</a></li>
+          <li class="list-inline-item">⋅</li>
+          <li class="list-inline-item"><a href="#!">Contact</a></li>
+          <li class="list-inline-item">⋅</li>
+          <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+          <li class="list-inline-item">⋅</li>
+          <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+        </ul>
+        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
+      </div>
+      <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item me-4">
+            <a href="#!"><i class="bi-facebook fs-3"></i></a>
+          </li>
+          <li class="list-inline-item me-4">
+            <a href="#!"><i class="bi-twitter fs-3"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#!"><i class="bi-instagram fs-3"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
