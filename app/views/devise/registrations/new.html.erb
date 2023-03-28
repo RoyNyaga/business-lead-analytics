@@ -1,4 +1,4 @@
-<div class="container-fluid bg-light p-5">
+<div class="container-fluid bg-light p-5" style="height: 100%">
   <h2 class="text-center my-5 heading-fonts">Create New Account</h2>
   <div class="row">
     <div class="col-md-6 mx-auto">
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="actions">
-          <%= f.submit "Sign up" %>
+          <%= f.submit "Sign up", class: "btn btn-primary btn-lg my-5"%>
         </div>
       <% end %>
       <%= render "devise/shared/links" %>
