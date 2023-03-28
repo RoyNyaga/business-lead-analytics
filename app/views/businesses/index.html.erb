@@ -1,14 +1,16 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Businesses</h1>
-
-<div id="businesses">
-  <% @businesses.each do |business| %>
-    <%= render business %>
-    <p>
-      <%= link_to "Show this business", business %>
-    </p>
+<div class="container-fluid">
+  <h4 class="text-center my-5">Businesses</h4>
+  <% if current_user.businesses.size < 1 %>
+    <div class="text-center normal-fonts">
+      <p>Please Create a Business</p>
+      <%= link_to "New business", new_business_path, class: "btn btn-primary" %>
+    </div>
   <% end %>
+  <div class="row">
+    <div id="businesses">
+      <% @businesses.each do |business| %>
+        <%= render business %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New business", new_business_path %>

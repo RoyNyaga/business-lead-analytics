@@ -1,4 +1,4 @@
-<div id="<%= dom_id business %>">
+<div class="col-md-2 card py-4 text-center mx-auto normal-fonts" id="<%= dom_id business %>">
   <p>
     <strong>Name:</strong>
     <%= business.name %>
@@ -11,12 +11,11 @@
 
   <p>
     <strong>Industry:</strong>
-    <%= business.industry_id %>
+    <%= business.industry.name %>
   </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= business.user_id %>
-  </p>
+  <div class="text-center">
+    <%= link_to "View", business, class: "btn btn-primary" %>
+  </div>
 
 </div>
