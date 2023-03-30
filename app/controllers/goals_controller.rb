@@ -26,6 +26,8 @@ class GoalsController < ApplicationController
 
   def goal_params
     params[:goal][:channels] = params[:goal][:channels].join(" -#- ")
-    params.require(:goal).permit(:quater_name, :projected_leads, :budget, :projected_conversion_rate, :projected_revenue, :channels, :business_id, :user_id)
+    params[:goal][:products] = params[:goal][:products].join(" -#- ")
+
+    params.require(:goal).permit(:quater_name, :projected_leads, :budget, :projected_conversion_rate, :projected_revenue, :channels, :products, :business_id, :user_id)
   end
 end

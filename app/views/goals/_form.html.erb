@@ -20,13 +20,13 @@
       <%= form.number_field :projected_conversion_rate, class: "form-control" %>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
       <%= form.label :projected_revenue %>
       <%= form.number_field :projected_revenue, class: "form-control" %>
     </div>
 
     <div class="col-md-6">
-      <h6 class="text-center text-secondary my-3">Channels</h6>
+      <h6 class="heading-fonts my-3">Channels</h6>
       <% @business.channels.each do |channel| %>
         <div class="p-0 m-0">
           <% if @goal.persisted? && @goal.channels.include?(channel.name) %>
@@ -35,6 +35,21 @@
           <% else %>
             <%= check_box_tag "goal[channels][]", channel.name %>
             <%= form.label channel.name %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6">
+      <h6 class="heading-fonts my-3">Products</h6>
+      <% @business.products.each do |product| %>
+        <div class="p-0 m-0">
+          <% if @goal.persisted? && @goal.products.include?(product.name) %>
+            <%= check_box_tag "goal[products][]", product.name, checked: true %>
+            <%= form.label product.name %>
+          <% else %>
+            <%= check_box_tag "goal[products][]", product.name %>
+            <%= form.label product.name %>
           <% end %>
         </div>
       <% end %>
