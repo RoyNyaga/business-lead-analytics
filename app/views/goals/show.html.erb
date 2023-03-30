@@ -1,22 +1,30 @@
-<div class="container">
-  <h2><%= @goal.quater_name %> Analyses</h2>
-  <div class="row">
-    <div class="col-md-4">
-      <p>Projected Leads: <%= @goal.projected_leads %></p>
-      <p>Budget <%= @goal.budget %></p>
-      <p>Projected Conversion Rate <%= @goal.projected_conversion_rate %></p>
-      <p>Projected Revenue <%= @goal.projected_revenue %></p>
-      <div>
-        <h5 class="heading-fonts">Channels</h5>
-        <% @goal.channels.split("-#-").each do |channel| %>
-          <span><%= channel.strip.capitalize %></span>
-        <% end %>
+<div class="container-fluid">
+  <div class="row goal-info">
+    <div class="col-md-3">
+      <div class="card text-center">
+        <h5 class="heading-fonts">Quater Information</h5>
+        <p><strong>Name:</strong> <%= @goal.quater_name %></p>
+        <p><strong>Projected Leads:</strong> <%= @goal.projected_leads %></p>
+        <p><strong>Budget:</strong> <%= @goal.budget %></p>
+        <p><strong>Projected Conversion Rate:</strong> <%= @goal.projected_conversion_rate %></p>
+        <p><strong>Projected Revenue:<strong> <%= @goal.projected_revenue %></p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center">
+            <h5 class="heading-fonts">Channels</h5>
+            <% @goal.channels.split("-#-").each do |channel| %>
+              <span><%= channel.strip.capitalize %></span>
+            <% end %>
+          </div>
+        </div>
       </div>
-
+      <h2></h2>
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+          <%= render "weekly_data_entries/modal" %>
+        </div>
+      </div>
     </div>
-
-    <div class="col-md-4">
-      <%= render "weekly_data_entries/modal" %>
-    </div>
-  </div>
-</div>

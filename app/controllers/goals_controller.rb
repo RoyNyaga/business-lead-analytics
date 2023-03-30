@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+  layout "dashboard_layout"
   before_action :set_goal, only: [:show]
 
   def show
