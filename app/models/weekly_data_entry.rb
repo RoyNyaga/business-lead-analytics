@@ -4,6 +4,7 @@ class WeeklyDataEntry < ApplicationRecord
   belongs_to :user
 
   before_save :set_leads_per_week, :set_conversion_rate
+  after_save :set_goal_actual_leads
 
   def parse_channel_leads(params)
     leads_per_channel = []
@@ -51,5 +52,9 @@ class WeeklyDataEntry < ApplicationRecord
 
   def product_leads_array_of_hashes
     product_leads_per_week.map{ |product| eval(product) }
+  end
+
+  def set_goal_actual_leads
+    goal.set_actual_leads
   end
 end

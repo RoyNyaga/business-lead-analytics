@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :businesses
+  resources :businesses do
+    member do
+      get :table_statistics
+    end
+  end
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

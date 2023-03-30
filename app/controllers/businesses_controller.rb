@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   layout "dashboard_layout"
-  before_action :set_business, only: %i[ show edit update destroy ]
+  before_action :set_business, only: %i[ show edit update destroy table_statistics]
 
   # GET /businesses or /businesses.json
   def index
@@ -59,6 +59,9 @@ class BusinessesController < ApplicationController
       format.html { redirect_to businesses_url, notice: "Business was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def table_statistics
   end
 
   private

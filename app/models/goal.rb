@@ -11,4 +11,9 @@ class Goal < ApplicationRecord
   def product_arr
     products.split("-#-").map(&:strip)
   end
+
+  def set_actual_leads
+    self.actual_leads = weekly_data_entries.map(&:leads_per_week).sum
+    save
+  end
 end
