@@ -1,4 +1,4 @@
-<%= form_with(model: @weekly_data_entry) do |form| %>
+<%= form_with(model: weekly_data_entry) do |form| %>
   <div class="row">
     <div class="col-md-6">
       <%= form.label :date %>
@@ -12,7 +12,11 @@
         <% if @goal.products.split("-#-").map(&:strip).include?(product.name) %>
           <div class="col-md-4" id="channel-leads-per-week">
             <%= form.label product.name %>
-            <%= number_field_tag "#{product.name}" %>
+            <% if weekly_data_entry.persisted? %>
+              <%= number_field_tag "#{product.name}", weekly_data_entry.product_leads_hash[product.name] %>
+            <% else %>
+              <%= number_field_tag "#{product.name}" %>
+            <% end %>
           </div>
         <% end %>
       <% end %>
@@ -25,7 +29,11 @@
         <% if @goal.channels.split("-#-").map(&:strip).include?(channel.name) %>
           <div class="col-md-4" id="channel-leads-per-week">
             <%= form.label channel.name %>
-            <%= number_field_tag "#{channel.name}" %>
+            <% if weekly_data_entry.persisted? %>
+              <%= number_field_tag "#{channel.name}", weekly_data_entry.channel_leads_hash[channel.name] %>
+            <% else %>
+              <%= number_field_tag "#{channel.name}" %>
+            <% end %>
           </div>
         <% end %>
       <% end %>

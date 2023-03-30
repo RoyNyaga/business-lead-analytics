@@ -16,6 +16,7 @@
             <th>Budget Expense</th>
             <th>Revenue</th>
             <th>Products/Service</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +38,9 @@
                 <% data.product_leads_array_of_hashes.each do |hash| %>
                   <p><%= hash.keys.first %> : <%= hash.values.first %></p>
                 <% end %>
+              </td>
+              <td>
+                <%= render partial: "weekly_data_entries/modal", locals: { weekly_data_entry: data, id_suffix: data.id }%>
               </td>
             </tr>
           <% end %>

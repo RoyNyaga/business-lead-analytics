@@ -57,4 +57,12 @@ class WeeklyDataEntry < ApplicationRecord
   def set_goal_actual_leads
     goal.set_actual_leads
   end
+
+  def channel_leads_hash # merge channel_leads_per_week into a big hash
+    channel_leads_array_of_hashes.reduce(Hash.new) { |main_hash, other_hash| main_hash.merge(other_hash) }
+  end
+
+  def product_leads_hash # merge product_leads_per_week into a big hash
+    product_leads_array_of_hashes.reduce(Hash.new) { |main_hash, other_hash| main_hash.merge(other_hash) }
+  end
 end
