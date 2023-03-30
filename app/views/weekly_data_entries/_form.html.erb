@@ -9,10 +9,12 @@
     <h5 class="heading-fonts my-3 text-center">Product Leads Per Week</h5>
     <div class="row">
       <% @goal.business.products.each do |product| %>
-        <div class="col-md-4" id="channel-leads-per-week">
-          <%= form.label product.name %>
-          <%= number_field_tag "#{product.name}" %>
-        </div>
+        <% if @goal.products.split("-#-").map(&:strip).include?(product.name) %>
+          <div class="col-md-4" id="channel-leads-per-week">
+            <%= form.label product.name %>
+            <%= number_field_tag "#{product.name}" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -20,10 +22,12 @@
     <h5 class="heading-fonts my-3 text-center">Channel Leads Per Week</h5>
     <div class="row">
       <% @goal.business.channels.each do |channel| %>
-        <div class="col-md-4" id="channel-leads-per-week">
-          <%= form.label channel.name %>
-          <%= number_field_tag "#{channel.name}" %>
-        </div>
+        <% if @goal.channels.split("-#-").map(&:strip).include?(channel.name) %>
+          <div class="col-md-4" id="channel-leads-per-week">
+            <%= form.label channel.name %>
+            <%= number_field_tag "#{channel.name}" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

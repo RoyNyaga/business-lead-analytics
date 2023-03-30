@@ -1,0 +1,43 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold" style="color: black;">Weekly Input</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Total Leads</th>
+            <th>Channel Leads</th>
+            <th>Contacted Leads</th>
+            <th>Paid Customers</th>
+            <th>Conversion Rate</th>
+            <th>Budget Expense</th>
+            <th>Revenue</th>
+            <th>Products/Service</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @goal.weekly_data_entries.each do |data| %>
+            <tr>
+              <th><%= data.date.strftime("%-V") %></th>
+              <td><%= data.leads_per_week %></td>
+              <td>
+                <% eval(data.channel_leads_per_week[0]).each do |key, value| %>
+                  <p><%= key %> : <%= value %></p>
+                <% end %>
+              </td>
+              <td>25</td>
+              <td>6</td>
+              <td>40%</td>
+              <td>$80</td>
+              <td>$130</td>
+              <td>Household Funiture; Custom Funiture </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

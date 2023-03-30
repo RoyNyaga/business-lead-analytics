@@ -1,10 +1,10 @@
 class WeeklyDataEntriesController < ApplicationController
 
   def create
+    @goal = Goal.find_by(id: params[:weekly_data_entry][:goal_id])
     @weekly_data_entry = WeeklyDataEntry.new(weekly_data_entry_params)
     @weekly_data_entry.parse_leads(params)
     respond_to do |format|
-      @goal = @weekly_data_entry.goal
       if @weekly_data_entry.save
         format.html { redirect_to @goal, notice: "Data Entry was successfully Added" }
       else
