@@ -7,10 +7,13 @@
     </div>
     <div class="d-flex justify-content-between">
       <p class="text-center">Projected Conversion Rate<br>
- <%= goal.projected_conversion_rate %></p>
+        <%= goal.projected_conversion_rate %></p>
       <p class="text-center">Projected Revenue<br>
- <%= goal.projected_revenue %></p>
+        <%= goal.projected_revenue %></p>
     </div>
-    <%= link_to "View", goal, class: "general-view-link" %>
+    <div class="d-flex justify-content-between">
+      <%= link_to "View", goal, class: "general-view-link" %>
+      <%= link_to 'Destroy', goal_path(goal), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "general-delete-link" %>
+    </div>
   </div>
 </div>

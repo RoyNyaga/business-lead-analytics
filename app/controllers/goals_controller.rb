@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   layout "dashboard_layout"
-  before_action :set_goal, only: [:show]
+  before_action :set_goal, only: [:show, :destroy]
 
   def show
     @weekly_data_entry = WeeklyDataEntry.new
@@ -15,6 +15,14 @@ class GoalsController < ApplicationController
       else
         format.html { redirect_to business_path(@business), status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @business = @goal.business
+    @goal.destroy
+    respond_to do |format|
+      format.html { redirect_to business_path(@business), notice: "Goal was successfully Deleted" }
     end
   end
 
