@@ -1,4 +1,5 @@
 class BusinessesController < ApplicationController
+  layout "dashboard_layout"
   before_action :set_business, only: %i[ show edit update destroy ]
 
   # GET /businesses or /businesses.json
