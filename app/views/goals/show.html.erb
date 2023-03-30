@@ -1,30 +1,45 @@
 <div class="container-fluid">
   <div class="row goal-info">
+    <div class="col-md-2">
+      <%= render "weekly_data_entries/modal" %>
+    </div>
     <div class="col-md-3">
-      <div class="card text-center">
-        <h5 class="heading-fonts">Quater Information</h5>
-        <p><strong>Name:</strong> <%= @goal.quater_name %></p>
-        <p><strong>Projected Leads:</strong> <%= @goal.projected_leads %></p>
-        <p><strong>Budget:</strong> <%= @goal.budget %></p>
-        <p><strong>Projected Conversion Rate:</strong> <%= @goal.projected_conversion_rate %></p>
-        <p><strong>Projected Revenue:<strong> <%= @goal.projected_revenue %></p>
-          </div>
+      <div class="card shadow">
+        <div class="card-header py-2">
+          <h5 class="heading-fonts text-center">Quater Information</h5>
         </div>
-        <div class="col-md-3">
-          <div class="card text-center">
-            <h5 class="heading-fonts">Channels</h5>
-            <% @goal.channels.split("-#-").each do |channel| %>
-              <span><%= channel.strip.capitalize %></span>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <h2></h2>
-      <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-          <%= render "weekly_data_entries/modal" %>
+        <div class="card-body px-3">
+          <p><strong>Name:</strong> <%= @goal.quater_name %></p>
+          <p><strong>Projected Leads:</strong> <%= @goal.projected_leads %></p>
+          <p><strong>Budget:</strong> <%= @goal.budget %></p>
+          <p><strong>Projected Conversion Rate:</strong> <%= @goal.projected_conversion_rate %></p>
+          <p><strong>Projected Revenue:</strong> <%= @goal.projected_revenue %></p>
         </div>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="card shadow text-center">
+        <div class="card-header">
+          <h5 class="heading-fonts text-center">Channels</h5>
+        </div>
+        <div class="card-body px-3">
+          <% @goal.channels.split("-#-").each do |channel| %>
+            <p><%= channel.strip.capitalize %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow text-center">
+        <div class="card-header">
+          <h5 class="heading-fonts text-center">Products</h5>
+        </div>
+        <div class="card-body px-3">
+          <% @goal.products.split("-#-").each do |product| %>
+            <p><%= product.strip.capitalize %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
