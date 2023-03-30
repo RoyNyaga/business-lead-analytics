@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to business_path(@business), notice: "Product was successfully Added." }
       else
-        format.html { redirect_to business_path(@business), alert: "Error: Product could not be created." status: :unprocessable_entity }
+        format.html { redirect_to business_path(@business), alert: "Error: Product could not be created.", status: :unprocessable_entity }
       end
     end
   end

@@ -1,36 +1,201 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <%= render @business %>
-      <div>
-        <%= link_to "Edit this business", edit_business_path(@business) %> |
-        <%= link_to "Back to businesses", businesses_path %>
-        <%= button_to "Destroy this business", @business, method: :delete %>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #047d57">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-laugh-wink"></i>
       </div>
+      <div class="sidebar-brand-text mx-3">Scoreboard</div>
+    </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" />
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link" href="index.html">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading">Business Setup</div>
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="goals.html">
+        <i class="fas fa-fw fa-list"></i>
+        <span>Business Goals</span>
+      </a>
+    </li>
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="weekly-data.html">
+        <i class="fas fa-fw fa-pen"></i>
+        <span>Weekly Data Entry</span>
+      </a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading">Business Data</div>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+      <a class="nav-link" href="charts.html">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Charts</span></a>
+    </li>
+    <!-- Nav Item - Business Stats -->
+    <li class="nav-item">
+      <a class="nav-link" href="statistics.html">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Business Stats </span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block" />
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+      <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-    <div class="col-md-7">
-      <h2 class="text-center heading-fonts">Quaterly Goals</h2>
-      <%= render "goals/modal" %>
-      <% @business.goals.each do |goal| %>
-        <%= render partial: "goals/goal", locals: { goal: goal } %>
-      <% end %>
+    <!-- Sidebar Message -->
+    <div class="sidebar-card d-none d-lg-flex">
+      <img class="sidebar-card-illustration mb-2" src="img/undraw_profile.svg" alt="..." />
+      <p class="text-center mb-2">
+        <strong>Client Scoreboard Customer Support</strong> is
+        availale for user onboarding or any other issue you
+        might have.
+      </p>
+      <a class="btn btn-success btn-sm" href="mailto:support@clientscorboards.com">Contact Us</a>
     </div>
-    <div class="col-md-2">
-      <div>
-        <h4 class="text-center heading-fonts">Channels</h4>
-        <%= render "channels/modal" %>
-        <% @business.channels.each do |channel| %>
-          <%= render partial: "channels/channel", locals: { channel: channel} %>
-        <% end %>
+  </ul>
+  <!-- End of Sidebar -->
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background-color: #0b513b">
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+          <div class="topbar-divider d-none d-sm-block"></div>
+          <!-- Nav Item - User Information -->
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-none d-lg-inline text-white-600 small">Douglas McGee</span>
+              <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Settings
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Activity Log
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- End of Topbar -->
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Business Goals</h1>
+        <div class="row">
+          <div class="col-lg-3">
+            <!-- Business Information -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold" style="color: black">
+                  <i class="fas fa-building"></i>
+                  Business Information
+                </h6>
+              </div>
+              <div class="card-body">
+                <%= render partial: "businesses/business_show_card", locals: { business: @business } %>
+                <!-- Show Business Data (Default) -->
+              </div>
+            </div>
+            <!-- Add Channels & Products -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold" style="color: black">
+                  <i class="bi bi-1-circle"></i>
+                  Products & Sevices
+                </h6>
+              </div>
+              <div class="card-body">
+                <% @business.products.each do |product| %>
+                  <%= render partial: "products/product", locals: { product: product} %>
+                <% end %>
+                <%= render "products/modal" %>
+              </div>
+            </div>
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold" style="color: black">
+                  Business Channels
+                </h6>
+              </div>
+              <div class="card-body">
+                <% @business.channels.each do |channel| %>
+                  <%= render partial: "channels/channel", locals: { channel: channel} %>
+                <% end %>
+                <%= render "channels/modal" %>
+              </div>
+            </div>
+          </div>
+          <!-- Setup Business Goals -->
+          <div class="col-lg-9">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold" style="color: black">
+                  Setup Goals
+                </h6>
+              </div>
+              <div class="card-body text-white" style="background-color:#047d57">
+                <p>
+                  Create a business goal for each
+                  quarter of the year.
+                </p>
+                <%= render "goals/modal" %>
+                <div class="row my-3">
+                  <% @business.goals.each do |goal| %>
+                    <%= render partial: "goals/goal", locals: { goal: goal } %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <div>
-        <h4 class="text-center heading-fonts">Products</h4>
-        <%= render "products/modal" %>
-        <% @business.products.each do |product| %>
-          <%= render partial: "products/product", locals: { product: product} %>
-        <% end %>
-      </div>
+      <!-- /.container-fluid -->
     </div>
+    <!-- End of Main Content -->
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; Your Website 2020</span>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
   </div>
+  <!-- End of Content Wrapper -->
 </div>

@@ -4,7 +4,7 @@
       <%= form.text_field :name, placeholder: "Enter Product", class: "form-control" %>
     </div>
     <div class="col-md-2 p-0">
-      <%= form.submit "Create" %>
+      <%= form.submit "Create", class: "modal-inline-btn" %>
     </div>
     <%= form.hidden_field :business_id, value: @business.id%>
     <%= form.hidden_field :user_id, value: current_user.id%>

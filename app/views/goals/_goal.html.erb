@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-6 dark-faint my-2">
   <div class="card p-3">
     <h2 class="heading-fonts text-center"><%= goal.quater_name %></h2>
     <div class="d-flex justify-content-between">
@@ -11,6 +11,6 @@
       <p class="text-center">Projected Revenue<br>
  <%= goal.projected_revenue %></p>
     </div>
-    <%= link_to "View", goal %>
+    <%= link_to "View", goal, class: "general-view-link" %>
   </div>
 </div>

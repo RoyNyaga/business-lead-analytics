@@ -228,3 +228,67 @@ footer.footer {
   border-radius: 30px;
   padding: 5px;
 }
+
+#business-goals-dashboard-left-sidebar{
+  min-height: 100vh;
+  background-color: #047d57;
+}
+
+.scoreboard-icon{
+  color: white;
+  font-size: 2em;
+}
+
+.sidebar-headings{
+  color: #f5f6f769;
+}
+
+.list-style-none{
+  list-style: none;
+  padding: none;
+}
+
+.sidebar-list-link{
+  color: #ffffff9e;
+}
+
+.sidebar-list-link:hover{
+  color: #ffffffe4;
+}
+
+.sidebar-icons{
+  color: #ffffff59;
+}
+
+#dashboard-nav{
+  background-color: #0b513b;
+  padding: 10px 0px;
+}
+
+#business-goals-main{
+  padding: 0px;
+}
+
+.dashboard-nav-name{
+  border-left: 1px solid #ffffff8f;
+  padding: 5px 20px;
+  color: #ffffff9e;
+}
+
+.modal-inline-btn{
+  background: #1cc88a;
+  color: white;
+  border: 1px solid #1cc88a;
+  padding: 5px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.dark-faint{
+  color: #858796;
+}
+
+.general-view-link{
+  color: #057c57;
+  font-weight: 900;
+}
