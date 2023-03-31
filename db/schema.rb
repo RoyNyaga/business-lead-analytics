@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_064707) do
     t.datetime "updated_at", null: false
     t.string "products"
     t.integer "actual_leads", default: 0
-    t.integer "contacted_leads"
+    t.integer "contacted_leads", default: 0
     t.index ["business_id"], name: "index_goals_on_business_id"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
