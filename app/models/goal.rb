@@ -17,15 +17,20 @@ class Goal < ApplicationRecord
     save
   end
 
-
-
-  def lead_difference
-    actual_leads - projected_leads
+  def set_contacted_leads
+    self.contacted_leads = weekly_data_entries.map(&:contacted_leads).sum
+    save
   end
 
-  private
+  def abandoned_leads
+    actual_leads - contacted_leads
+  end
 
   def projected_leads # overide projected_leads data type, changing it from string to integer
     super.to_i
+  end
+
+  def lead_difference
+    actual_leads - projected_leads
   end
 end
