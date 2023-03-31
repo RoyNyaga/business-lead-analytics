@@ -16,4 +16,12 @@ class Goal < ApplicationRecord
     self.actual_leads = weekly_data_entries.map(&:leads_per_week).sum
     save
   end
+
+  def lead_difference
+    actual_leads - projected_leads
+  end
+
+  def projected_leads
+    super.to_i
+  end
 end

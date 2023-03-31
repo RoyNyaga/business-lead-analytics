@@ -11,7 +11,19 @@ class WeeklyDataEntriesController < ApplicationController
         format.html { redirect_to @goal, alert: "Data Entry could not be created", status: :unprocessable_entity }
       end
     end
-  
+  end
+
+  def update
+    @goal = Goal.find_by(id: params[:weekly_data_entry][:goal_id])
+    @weekly_data_entry = WeeklyDataEntry.find_by(id: params[:id])
+    @weekly_data_entry.parse_leads(params)
+    respond_to do |format|
+      if @weekly_data_entry.update(weekly_data_entry_params)
+        format.html { redirect_to @goal, notice: "Data Entry was successfully Updated" }
+      else
+        format.html { redirect_to @goal, alert: "Data Entry could not be Updated", status: :unprocessable_entity }
+      end
+    end
   end
 
   private 

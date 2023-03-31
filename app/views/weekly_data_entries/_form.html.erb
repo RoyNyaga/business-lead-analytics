@@ -56,8 +56,8 @@
       <%= form.label :revenue %>
       <%= form.number_field :revenue, class: "form-control", required: true %>
     </div>
-    <div class="col-md-2">
-      <%= form.submit "Create" %>
+    <div class="col-md-2 my-3">
+      <%= form.submit action_text(weekly_data_entry), class: "btn btn-success" %>
     </div>
     <%= form.hidden_field :business_id, value: @goal.business_id%>
     <%= form.hidden_field :user_id, value: current_user.id%>
