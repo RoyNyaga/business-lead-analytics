@@ -4,7 +4,7 @@ class WeeklyDataEntry < ApplicationRecord
   belongs_to :user
 
   before_save :set_leads_per_week, :set_conversion_rate
-  after_save :set_goal_actual_leads, :set_goal_contacted_leads
+  after_save :update_related_goal_attributes
 
   def parse_channel_leads(params)
     leads_per_channel = []
@@ -64,11 +64,7 @@ class WeeklyDataEntry < ApplicationRecord
 
   private 
 
-  def set_goal_actual_leads
-    goal.set_actual_leads
-  end
-
-  def set_goal_contacted_leads
-    goal.set_contacted_leads
+  def update_related_goal_attributes
+    goal.update_related_fields_based_on_weekly_data_changes
   end
 end

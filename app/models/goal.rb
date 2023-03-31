@@ -12,14 +12,15 @@ class Goal < ApplicationRecord
     products.split("-#-").map(&:strip)
   end
 
-  def set_actual_leads
-    self.actual_leads = weekly_data_entries.map(&:leads_per_week).sum
-    save
-  end
-
-  def set_contacted_leads
-    self.contacted_leads = weekly_data_entries.map(&:contacted_leads).sum
-    save
+  def update_related_fields_based_on_weekly_data_changes
+    @data = weekly_data_entries
+    if @data.size > 0
+      self.actual_leads = @data.map(&:leads_per_week).sum
+      self.contacted_leads = @data.map(&:contacted_leads).sum
+      self.revenue = @data.map(&:revenue).sum
+      self.conversion_rate = @data.map(&:conversion_rate).sum / @data.count
+      save
+    end
   end
 
   def abandoned_leads
