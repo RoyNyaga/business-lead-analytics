@@ -17,11 +17,15 @@ class Goal < ApplicationRecord
     save
   end
 
+
+
   def lead_difference
     actual_leads - projected_leads
   end
 
-  def projected_leads
+  private
+
+  def projected_leads # overide projected_leads data type, changing it from string to integer
     super.to_i
   end
 end
