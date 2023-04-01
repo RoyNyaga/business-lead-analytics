@@ -49,10 +49,12 @@ class Goal < ApplicationRecord
   end
 
   def parse_channels_chart_data
-    data_set = Hash.new
+    data_set = weekly_data_channel_initialize_hash
     weekly_data_entries.each do |data|
-      data.channel_leads_array_of_hashes.each do |value|
+      data.channel_leads_hash.each do |key, value|
+        data_set[key] += value.to_i
       end
     end
+    data_set
   end
 end
