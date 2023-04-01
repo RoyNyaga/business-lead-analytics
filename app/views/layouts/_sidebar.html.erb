@@ -1,14 +1,32 @@
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #047d57">
   <!-- Sidebar - Brand -->
-  <li>
-    <% if current_user.businesses.present? && current_user.businesses.first.goals.present? %>
+  <% if current_user.businesses.present? && current_user.businesses.first.goals.present? %>
+    <li class="side-bar-lists">
       <%= link_to scoreboard_summary_goal_path(current_user.businesses.first.goals.first), class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Scoreboard</div>
       <% end %>
-    <% end %>
-  </li>
+    </li>
+  <% end %>
+  <% if current_user.businesses.present? %>
+    <li class="side-bar-lists">
+      <%= link_to business_path(current_user.businesses.first), class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Business</div>
+      <% end %>
+    </li>
+    <li class="side-bar-lists">
+      <%= link_to table_statistics_business_path(current_user.businesses.first), class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Goal Stats</div>
+      <% end %>
+    </li>
+  <% end %>
   <!-- Divider -->
 </ul>
