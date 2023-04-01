@@ -4,7 +4,7 @@
     <li class="side-bar-lists">
       <%= link_to scoreboard_summary_goal_path(current_user.businesses.first.goals.first), class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="bi bi-emoji-smile-fill"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Scoreboard</div>
       <% end %>
@@ -14,15 +14,15 @@
     <li class="side-bar-lists">
       <%= link_to business_path(current_user.businesses.first), class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="bi bi-speedometer"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Business</div>
+        <div class="sidebar-brand-text mx-3">Dashboard</div>
       <% end %>
     </li>
     <li class="side-bar-lists">
       <%= link_to table_statistics_business_path(current_user.businesses.first), class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="bi bi-table"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Goal Stats</div>
       <% end %>

@@ -7,5 +7,4 @@ class Business < ApplicationRecord
   has_many :weekly_data_entries, dependent: :destroy
 
   validates :name, presence: true
-  validates :products, presence: true
 end
