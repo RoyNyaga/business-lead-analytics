@@ -3,7 +3,6 @@ import './add_jquery'
 import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
-import "./jquery_datatables"
-
+import "chartkick/chart.js"
 
 
