@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
   resources :channels
-  resources :goals
+  resources :goals do 
+    member do
+      get :scoreboard_summary
+    end
+  end
   resources :products
   resources :weekly_data_entries
 end

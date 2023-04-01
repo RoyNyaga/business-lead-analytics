@@ -34,4 +34,9 @@ class Goal < ApplicationRecord
   def lead_difference
     actual_leads - projected_leads
   end
+
+  def lead_progress
+    progress = (actual_leads.to_f / projected_leads.to_f) * 100
+    progress.round
+  end
 end

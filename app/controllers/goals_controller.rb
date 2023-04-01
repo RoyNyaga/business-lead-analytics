@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   layout "dashboard_layout"
-  before_action :set_goal, only: [:show, :destroy]
+  before_action :set_goal, only: [:show, :destroy, :scoreboard_summary]
 
   def show
     @weekly_data_entry = WeeklyDataEntry.new
@@ -24,6 +24,9 @@ class GoalsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to business_path(@business), notice: "Goal was successfully Deleted" }
     end
+  end
+
+  def scoreboard_summary 
   end
 
   private
