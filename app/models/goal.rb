@@ -39,4 +39,20 @@ class Goal < ApplicationRecord
     progress = (actual_leads.to_f / projected_leads.to_f) * 100
     progress.round
   end
+
+  def weekly_data_channel_initialize_hash
+    channel_hash = Hash.new
+    channels.split("-#-").map(&:strip).each do |channel|
+      channel_hash[channel] = 0
+    end
+    channel_hash
+  end
+
+  def parse_channels_chart_data
+    data_set = Hash.new
+    weekly_data_entries.each do |data|
+      data.channel_leads_array_of_hashes.each do |value|
+      end
+    end
+  end
 end

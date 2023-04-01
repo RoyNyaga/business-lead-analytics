@@ -26,7 +26,8 @@ class GoalsController < ApplicationController
     end
   end
 
-  def scoreboard_summary 
+  def scoreboard_summary
+    @weekly_data_entries = @goal.weekly_data_entries
   end
 
   private
