@@ -58,7 +58,7 @@
             Create a business goal for each
             quarter of the year.
           </p>
-          <%= render partial: "goals/modal", locals: { form_type: "create", id_suffix: 0, goal: @goal } %>
+          <%= render partial: "goals/modal", locals: { form_type: "create", id_suffix: 0, goal: @goal, btn_text: "Add Goal" } %>
           <div class="row my-3">
             <% @business.goals.each do |goal| %>
               <%= render partial: "goals/goal", locals: { goal: goal } %>

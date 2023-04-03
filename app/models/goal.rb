@@ -7,12 +7,17 @@ class Goal < ApplicationRecord
   validates :projected_revenue, presence: true
   validates :products, presence: true
   validates :channels, presence: true
+  validates :unique_code, uniqueness: { scope: :business_id,
+    message: "This Quater already exist for this year, Please select another Quater." }
   validate :projected_leads_range
-  
 
+  before_validation :set_unique_code
+  
   QUATER_OPTIONS = ["Q1", "Q2", "Q3", "Q4"]
 
-  
+  def set_unique_code
+    self.unique_code = quater_name + " - " + Time.now.year.to_s
+  end
 
   def projected_leads_range
     self.errors.add(:projected_leads, "Can not be less than 1") if projected_leads < 1
