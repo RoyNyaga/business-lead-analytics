@@ -2,6 +2,13 @@ class Goal < ApplicationRecord
   belongs_to :business
   has_many :weekly_data_entries, dependent: :destroy
 
+  validates :quater_name, presence: true
+  validates :budget, presence: true
+  validates :projected_revenue, presence: true
+  validates :products, presence: true
+  validates :channels, presence: true
+  
+
   QUATER_OPTIONS = ["Q1", "Q2", "Q3", "Q4"]
 
   def channel_arr
