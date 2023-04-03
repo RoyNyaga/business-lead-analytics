@@ -217,8 +217,13 @@ footer.footer {
 }
 
 .devise-links {
-  color: green;
+  color: #f4faf4;
   font-family: $robotoFonts;
+  font-weight: 900;
+}
+
+.devise-links:hover{
+  color: #024002;
 }
 
 .back-icon {
@@ -316,3 +321,22 @@ footer.footer {
   text-decoration: underline;
 }
 
+#new_user{
+  label{
+    color: white;
+    font-weight: 900;
+  }
+}
+
+.auth-btns{
+  border: 2px solid white;
+  background: #2ce6a4;
+  color: white;
+  font-weight: 900;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.auth-btns:hover{
+  background: #047d57;
+}
