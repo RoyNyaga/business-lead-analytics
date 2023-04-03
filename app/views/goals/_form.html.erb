@@ -1,4 +1,4 @@
-<%= form_with(model: @goal) do |form| %>
+<%= form_with(model: goal) do |form| %>
   <div class="row dark-faint">
     <div class="col-md-6">
       <%= form.label :quater_name %>
@@ -29,9 +29,9 @@
       <h6 class="heading-fonts my-3">Channels</h6>
       <% @business.channels.each do |channel| %>
         <div class="p-0 m-0">
-          <% if @goal.persisted? && @goal.channels.include?(channel.name) %>
+          <% if goal.persisted? && goal.channels.include?(channel.name) %>
             <%= check_box_tag "goal[channels][]", channel.name, checked: true %>
-            <%= form.label channnel.name %>
+            <%= form.label channel.name %>
           <% else %>
             <%= check_box_tag "goal[channels][]", channel.name %>
             <%= form.label channel.name %>
@@ -44,7 +44,7 @@
       <h6 class="heading-fonts my-3">Products</h6>
       <% @business.products.each do |product| %>
         <div class="p-0 m-0">
-          <% if @goal.persisted? && @goal.products.include?(product.name) %>
+          <% if goal.persisted? && goal.products.include?(product.name) %>
             <%= check_box_tag "goal[products][]", product.name, checked: true %>
             <%= form.label product.name %>
           <% else %>

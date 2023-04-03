@@ -1,14 +1,19 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-success btn-icon-split p-1" data-bs-toggle="modal" data-bs-target="#goalModal">
-  Add Goal
-</button>
-
+<% if form_type == "edit" %>
+  <button type="button" class="edit-link-yellow" data-bs-toggle="modal" data-bs-target="#goalModal-<%= id_suffix %>">
+    Edit
+  </button>
+<% else %>
+  <button type="button" class="btn btn-success btn-icon-split p-1" data-bs-toggle="modal" data-bs-target="#goalModal-<%= id_suffix %>">
+    Add Goal
+  </button>
+<% end %>
 <!-- Modal -->
-<div class="modal fade" id="goalModal" tabindex="-1" aria-labelledby="goalModalLabel" aria-hidden="true">
+<div class="modal fade" id="goalModal-<%= id_suffix %>" tabindex="-1" aria-labelledby="goalModalLabel-<%= id_suffix %>" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
-        <%= render "goals/form" %>
+        <%= render partial: "goals/form", locals: { goal: goal } %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

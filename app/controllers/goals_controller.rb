@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   layout "dashboard_layout"
-  before_action :set_goal, only: [:show, :destroy, :scoreboard_summary]
+  before_action :set_goal, only: [:show, :destroy, :scoreboard_summary, :update]
 
   def show
     @weekly_data_entry = WeeklyDataEntry.new
@@ -16,6 +16,17 @@ class GoalsController < ApplicationController
         format.html { redirect_to business_path(@business), status: :unprocessable_entity }
       end
     end
+  end
+
+  def update
+    @business = Business.find_by(id: params[:goal][:business_id])
+      respond_to do |format|
+        if @goal.update(goal_params)
+          format.html { redirect_to business_path(@business), notice: "Goal has successfully been updated." }
+        else
+          format.html { redirect_to business_path(@business), alert: "Goal Could not be updated." }
+        end
+      end
   end
 
   def destroy
