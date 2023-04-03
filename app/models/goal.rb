@@ -7,9 +7,16 @@ class Goal < ApplicationRecord
   validates :projected_revenue, presence: true
   validates :products, presence: true
   validates :channels, presence: true
+  validate :projected_leads_range
   
 
   QUATER_OPTIONS = ["Q1", "Q2", "Q3", "Q4"]
+
+  
+
+  def projected_leads_range
+    self.errors.add(:projected_leads, "Can not be less than 1") if projected_leads < 1
+  end
 
   def channel_arr
     channels.split("-#-").map(&:strip)
