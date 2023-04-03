@@ -11,7 +11,9 @@
             With Client Scoreboards</h1>
           <div class="row">
             <!--Get Started Button-->
-            <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton"  type="submit">Get Started</button></div>
+            <div class="col-auto">
+              <%= link_to "Get Started", new_user_session_path, class: "btn btn-success" %>
+            </div>
           </div>
         </form>
       </div>
@@ -135,7 +137,7 @@ without a dashboard.
           <!-- Email address input-->
           <div class="row">
             <div class="col-md-3 mx-auto">
-              <%= link_to "Log In", new_user_session_path, class: "btn btn-primary btn-lg" %>
+              <%= link_to "Log In", new_user_session_path, class: "btn btn-success btn-lg" %>
             </div>
           </div>
           <!-- Submit success message-->
@@ -180,13 +182,13 @@ without a dashboard.
       <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
         <ul class="list-inline mb-0">
           <li class="list-inline-item me-4">
-            <a href="#!"><i class="bi-facebook fs-3"></i></a>
+            <a href="#!"><i class="bi-facebook fs-3 text-success"></i></a>
           </li>
           <li class="list-inline-item me-4">
-            <a href="#!"><i class="bi-twitter fs-3"></i></a>
+            <a href="#!"><i class="bi-twitter fs-3 text-success"></i></a>
           </li>
           <li class="list-inline-item">
-            <a href="#!"><i class="bi-instagram fs-3"></i></a>
+            <a href="#!"><i class="bi-instagram fs-3 text-success"></i></a>
           </li>
         </ul>
       </div>
