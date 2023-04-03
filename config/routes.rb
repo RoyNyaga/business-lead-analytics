@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     member do
       get :scoreboard_summary
     end
+
+    collection do
+      get :form_error_page
+    end
   end
   resources :products
   resources :weekly_data_entries

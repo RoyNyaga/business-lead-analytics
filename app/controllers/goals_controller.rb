@@ -13,9 +13,13 @@ class GoalsController < ApplicationController
       if @goal.save
         format.html { redirect_to business_path(@business), notice: "Goal was successfully Created" }
       else
-        format.html { redirect_to business_path(@business), status: :unprocessable_entity }
+        format.html { render "goals/form_error_page", alert: "Sorry!! Goal Could not be created.", status: :unprocessable_entity }
       end
     end
+  end
+
+  def form_error_page
+
   end
 
   def update
@@ -48,8 +52,8 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params[:goal][:channels] = params[:goal][:channels].join(" -#- ")
-    params[:goal][:products] = params[:goal][:products].join(" -#- ")
+    params[:goal][:channels] = params[:goal][:channels].join(" -#- ") if params[:goal][:channels].present?
+    params[:goal][:products] = params[:goal][:products].join(" -#- ") if params[:goal][:products].present?
 
     params.require(:goal).permit(:quater_name, :projected_leads, :budget, :projected_conversion_rate, :projected_revenue, :channels, :products, :business_id, :user_id)
   end

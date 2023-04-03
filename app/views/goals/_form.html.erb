@@ -1,5 +1,15 @@
 <%= form_with(model: goal) do |form| %>
   <div class="row dark-faint">
+  <% if goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this Goal from being saved:</h2>
+      <ul>
+        <% goal.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <div class="col-md-6">
       <%= form.label :quater_name %>
       <%= form.select :quater_name, Goal::QUATER_OPTIONS, class: "form-control" %>

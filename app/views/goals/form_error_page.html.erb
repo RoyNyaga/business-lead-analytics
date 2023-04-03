@@ -1,0 +1,10 @@
+<div class="container-fluid bg-light">
+  <%= link_to businesses_path do %>
+    <%= render "shared/buttons/back-icon"%>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <%= render partial: "goals/form", locals: { goal: @goal } %>
+    </div>
+  </div>
+</div>
