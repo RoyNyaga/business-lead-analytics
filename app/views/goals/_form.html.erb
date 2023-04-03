@@ -12,17 +12,17 @@
   <% end %>
     <div class="col-md-6">
       <%= form.label :quater_name %>
-      <%= form.select :quater_name, Goal::QUATER_OPTIONS, class: "form-control" %>
+      <%= form.select :quater_name, Goal::QUATER_OPTIONS, required: true, class: "form-control" %>
     </div>
 
     <div class="col-md-6">
       <%= form.label :projected_leads %>
-      <%= form.text_field :projected_leads, class: "form-control" %>
+      <%= form.text_field :projected_leads, required: true, class: "form-control" %>
     </div>
 
     <div class="col-md-6">
       <%= form.label :budget %>
-      <%= form.number_field :budget, class: "form-control" %>
+      <%= form.number_field :budget, required: true, class: "form-control" %>
     </div>
 
     <div class="col-md-6">
