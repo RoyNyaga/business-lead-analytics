@@ -26,9 +26,12 @@
         </div>
         <div class="card-body">
           <% @business.products.each do |product| %>
-            <%= render partial: "products/product", locals: { product: product} %>
+            <div class="d-flex justify-content-between">
+              <%= render partial: "products/product", locals: { product: product } %>
+              <%= render partial: "products/modal", locals: { product: product, id_suffix: product.id, form_type: "Edit" } %>
+            </div>
           <% end %>
-          <%= render "products/modal" %>
+          <%= render partial: "products/modal", locals: { product: @product, id_suffix: 0, form_type: "Create" } %>
         </div>
       </div>
       <div class="card shadow mb-4">

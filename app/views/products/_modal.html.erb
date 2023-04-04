@@ -1,17 +1,22 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-success btn-block" data-bs-toggle="modal" data-bs-target="#productModal">
-   Add Product / Service
-</button>
-
+<% if form_type == "Edit" %>
+  <button type="button" class="edit-link-yellow" data-bs-toggle="modal" data-bs-target="#productModal-<%= id_suffix %>">
+    <i class="bi bi-pencil-square"></i>
+  </button>
+<% else %>
+  <button type="button" class="btn btn-success btn-block" data-bs-toggle="modal" data-bs-target="#productModal-<%= id_suffix %>">
+    Add Product / Service
+  </button>
+<% end %>
 <!-- Modal -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+<div class="modal fade" id="productModal-<%= id_suffix %>" tabindex="-1" aria-labelledby="productModalLabel-<%= id_suffix %>" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
-        <%= render "products/form" %>
+        <%= render partial: "products/form", locals: { product: product, form_type: form_type } %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
