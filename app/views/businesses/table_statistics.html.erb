@@ -20,7 +20,7 @@
         <tbody>
           <% @business.goals.each do |goal| %>
             <tr>
-              <th><%= goal.quater_name %> - <%= goal.created_at.year %> </th>
+              <th><%= link_to goal.unique_code, scoreboard_summary_goal_path(goal), class: "general-view-link" %> </th>
               <td><%= goal.projected_leads %></td>
               <td><%= goal.actual_leads %></td>
               <td><%= goal.lead_difference %></td>

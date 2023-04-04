@@ -28,7 +28,7 @@ class GoalsController < ApplicationController
         if @goal.update(goal_params)
           format.html { redirect_to business_path(@business), notice: "Goal has successfully been updated." }
         else
-          format.html { redirect_to business_path(@business), alert: "Goal Could not be updated." }
+          format.html { render "goals/form_error_page", alert: "Goal Could not be updated.", status: :unprocessable_entity }
         end
       end
   end
@@ -52,8 +52,8 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params[:goal][:channels] = params[:goal][:channels].join(" -#- ") if params[:goal][:channels].present?
-    params[:goal][:products] = params[:goal][:products].join(" -#- ") if params[:goal][:products].present?
+    params[:goal][:channels] = params[:goal][:channels].present? ? params[:goal][:channels].join(" -#- ") : ""
+    params[:goal][:products] = params[:goal][:products].present? ? params[:goal][:products].join(" -#- ") : ""
 
     params.require(:goal).permit(:quater_name, :projected_leads, :budget, :projected_conversion_rate, :projected_revenue, :channels, :products, :business_id, :user_id)
   end
