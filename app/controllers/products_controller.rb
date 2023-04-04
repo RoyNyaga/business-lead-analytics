@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:update]
-  
+
   def create
     @product = Product.new(product_params)
     @business = Business.find_by(id: params[:product][:business_id])
@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to business_path(@business), notice: "Product was successfully Added." }
       else
-        format.html { redirect_to business_path(@business), alert: "Error: Product could not be created.", status: :unprocessable_entity }
+        format.html { redirect_to business_path(@business), status: :unprocessable_entity, alert: "Error: Product could not be created.", status: :unprocessable_entity }
       end
     end
   end
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         format.html { redirect_to business_path(@business), notice: "Product was successfully updated" }
       else
-        format.html { redirect_to business_path(@business), alart: "Error!!, Product could not be updated: #{@product.errors.full_message.join(",")}" }
+        format.html { redirect_to business_path(@business), status: :unprocessable_entity, alart: "Error!!, Product could not be updated: #{@product.errors.full_message.join(",")}" }
       end
     end
   end
