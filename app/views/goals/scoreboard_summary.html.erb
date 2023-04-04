@@ -1,9 +1,12 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Scoreboard Summary</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                                class="fa-sm text-white-50"></i>Select Quarter</a>
+    <h1 class="h3 mb-0 text-gray-800">Scoreboard Summary - <%= @goal.unique_code %></h1>
+
+    <%= form_with url: scoreboard_summary_goal_path, method: :get do |form| %>
+      <%= form.collection_select :select_id, @goal.business.goals, :id, :unique_code %>
+      <%= form.submit "Apply", class: "btn btn-success my-2" %>
+    <% end %>
   </div>
   <!-- Content Row -->
   <div class="row">
@@ -91,17 +94,14 @@
   <!-- Content Row -->
   <div class="row">
     <!-- Area Chart- Leads Overview -->
-    <div class="col-xl-8 col-lg-7">
+    <div class="col-md-8 mb-4">
+      <!-- Revenue - Add Chart For Revenue Here -->
       <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold" style="color: rgb(0, 0, 0);">Leads Overview</h6>
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold" style="color: black;">Revenue</h6>
         </div>
-        <!-- Card Body -->
         <div class="card-body">
-          <div class="chart-area">
-            <%= line_chart(@weekly_data_entries.pluck(:date, :leads_per_week).to_h) %>
-          </div>
+          <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
         </div>
       </div>
     </div>
@@ -124,37 +124,14 @@
   <!-- Content Row -->
   <div class="row">
     <!-- Content Column -->
-    <div class="col-lg-6 mb-4">
+    <div class="col-md-4 mb-4">
       <!-- Product / Service Performance -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold" style="color: black;">Product / Service Performance</h6>
         </div>
         <div class="card-body">
-          <h4 class="small font-weight-bold">Full Plumbering House Setup <span
-                                            class="float-right">20%</span></h4>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <h4 class="small font-weight-bold">House Section Blumbering Fix <span
-                                            class="float-right">40%</span></h4>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <h4 class="small font-weight-bold"> Water Leak Fix <span
-                                            class="float-right">60%</span></h4>
-          <div class="progress mb-4">
-            <div class="progress-bar" role="progressbar" style="width: 60%"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <h4 class="small font-weight-bold">Plumbering Maintenance <span
-                                            class="float-right">80%</span></h4>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+          <%= pie_chart @goal.parse_products_chart_data %>
         </div>
       </div>
       <!-- Colomn Space -->
@@ -163,14 +140,39 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6 mb-4">
+    <div class="col-xl-8 col-lg-7">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold" style="color: rgb(0, 0, 0);">Leads Overview</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="chart-area">
+            <%= line_chart(@weekly_data_entries.pluck(:date, :leads_per_week).to_h) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 mb-4">
       <!-- Revenue - Add Chart For Revenue Here -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold" style="color: black;">Revenue</h6>
+          <h6 class="m-0 font-weight-bold" style="color: black;">Paid Customers Over Time</h6>
         </div>
         <div class="card-body">
-          <%= column_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
+          <%= column_chart(@weekly_data_entries.pluck(:date, :paid_customers)) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <!-- Revenue - Add Chart For Revenue Here -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold" style="color: black;">Leads Vs Abandoned Leads</h6>
+        </div>
+        <div class="card-body">
+          <%= pie_chart(@goal.parse_leads_abandoned_leads_data) %>
         </div>
       </div>
     </div>

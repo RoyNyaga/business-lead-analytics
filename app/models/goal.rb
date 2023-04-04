@@ -67,11 +67,33 @@ class Goal < ApplicationRecord
     channel_hash
   end
 
+  def weekly_data_product_initialize_hash
+    product_hash = Hash.new
+    products.split("-#-").map(&:strip).each do |product|
+      product_hash[product] = 0
+    end
+    product_hash
+  end
+
   def parse_channels_chart_data
     data_set = weekly_data_channel_initialize_hash
     weekly_data_entries.each do |data|
       data.channel_leads_hash.each do |key, value|
-        data_set[key] += value.to_i
+        data_set[key] += value.to_i if data_set[key].present?
+      end
+    end
+    data_set
+  end
+
+  def parse_leads_abandoned_leads_data
+    { "Leads" => actual_leads, "Abondoned Leads" => abandoned_leads }
+  end
+
+  def parse_products_chart_data
+    data_set = weekly_data_product_initialize_hash
+    weekly_data_entries.each do |data|
+      data.product_leads_hash.each do |key, value|
+        data_set[key] += value.to_i if data_set[key].present?
       end
     end
     data_set

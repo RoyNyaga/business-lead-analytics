@@ -42,7 +42,12 @@ class GoalsController < ApplicationController
   end
 
   def scoreboard_summary
-    @weekly_data_entries = @goal.weekly_data_entries
+    if params[:select_id].present?
+      @goal = Goal.find_by(id: params[:select_id])
+      @weekly_data_entries = @goal.weekly_data_entries
+    else
+      @weekly_data_entries = @goal.weekly_data_entries
+    end
   end
 
   private
