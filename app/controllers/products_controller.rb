@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:update]
+  before_action :set_product, only: [:update, :destroy]
 
   def create
     @product = Product.new(product_params)
@@ -24,6 +24,14 @@ class ProductsController < ApplicationController
         format.html { redirect_to business_path(@business), status: :unprocessable_entity, alart: "Error!!, Product could not be updated: #{@product.errors.full_message.join(",")}" }
       end
     end
+  end
+
+  def destroy
+    @product.destroy
+    @business = @product.business
+
+    flash[:notice] = "Product was successfully destroyed"
+    redirect_to business_path(@business)
   end
 
   def set_product
