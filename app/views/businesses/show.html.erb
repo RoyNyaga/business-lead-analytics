@@ -50,10 +50,22 @@
           </h6>
         </div>
         <div class="card-body">
-          <% @business.channels.each do |channel| %>
-            <%= render partial: "channels/channel", locals: { channel: channel} %>
-          <% end %>
-          <%= render "channels/modal" %>
+          <div class="row">
+            <% @business.channels.each do |channel| %>
+              <div class="col-md-8">
+                <%= render partial: "channels/channel", locals: { channel: channel} %>
+              </div>
+              <div class="col-md-2">
+                <%= render partial: "channels/modal", locals: { channel: channel, id_suffix: channel.id, form_type: "edit", btn_text: "Update" } %>
+              </div>
+              <div class="col-md-2">
+                <%= link_to channel_path(channel), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "general-delete-link" do %>
+                  <i class="bi bi-x-circle"></i>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <%= render partial: "channels/modal", locals: { channel: @channel, id_suffix: 0, form_type: "create", btn_text: "Create" } %>
         </div>
       </div>
     </div>

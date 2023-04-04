@@ -1,17 +1,22 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-success btn-block" data-bs-toggle="modal" data-bs-target="#channelModal">
-  Add Channel
-</button>
-
+<% if form_type == "edit" %>
+  <button type="button" class="edit-link-yellow" data-bs-toggle="modal" data-bs-target="#channelModal-<%= id_suffix %>">
+    <i class="bi bi-pencil-square"></i>
+  </button>
+<% else %>
+  <button type="button" class="btn btn-success btn-block" data-bs-toggle="modal" data-bs-target="#channelModal-<%= id_suffix %>">
+    Add Channel
+  </button>
+<% end %>
 <!-- Modal -->
-<div class="modal fade" id="channelModal" tabindex="-1" aria-labelledby="channelModalLabel" aria-hidden="true">
+<div class="modal fade" id="channelModal-<%= id_suffix %>" tabindex="-1" aria-labelledby="channelModalLabel-<%= id_suffix %>" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
-        <%= render "channels/form" %>
+        <%= render partial: "channels/form", locals: { channel: channel, btn_text: btn_text } %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -34,10 +34,6 @@ class ProductsController < ApplicationController
     redirect_to business_path(@business)
   end
 
-  def set_product
-    @product = Product.find_by(id: params[:id])
-  end
-
   private 
 
   def set_product
