@@ -1,22 +1,18 @@
-<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #047d57">
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #047d57; width: 300px !important;">
   <!-- Sidebar - Brand -->
-  <% if current_user.businesses.present? && current_user.businesses.first.goals.present? %>
-    <li class="side-bar-lists">
-      <%= link_to scoreboard_summary_goal_path(current_user.businesses.first.goals.first), class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="bi bi-emoji-smile-fill"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Scoreboard</div>
-      <% end %>
-    </li>
-  <% end %>
+  <li class="text-white p-2" style="border-bottom: 2px solid white;">
+    <span class="sidebar-brand-icon">
+      <i class="bi bi-emoji-smile-fill" style="font-size: 2em;"></i>
+    </span>
+    <span class="sidebar-brand-text p-1" style="font-size: 1.5em; font-weight: bold;">Scoreboard</span>
+  </li>
   <% if current_user.businesses.present? %>
-    <li class="side-bar-lists">
+    <li class="side-bar-lists pt-5">
       <%= link_to business_path(current_user.businesses.first), class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="bi bi-speedometer"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Dashboard</div>
+        <div class="sidebar-brand-text mx-3">Business Goals</div>
       <% end %>
     </li>
     <li class="side-bar-lists">
