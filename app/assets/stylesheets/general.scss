@@ -161,11 +161,6 @@ header.masthead .h1 {
   background-size: cover;
 }
 
-@media (min-width: 768px) {
-  .showcase .showcase-text {
-    padding: 7rem;
-  }
-}
 
 .testimonials {
   padding-top: 7rem;
@@ -365,4 +360,35 @@ footer.footer {
 #select_id{
   border: 2px solid #b5b0b0;
   border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.dashboard-heading{
+  color: red;
+}
+
+#accordionSidebar{
+  background-color: #047d57; 
+  width: 300px;
+}
+
+.score-borad-tag{
+  font-weight: 800;
+  font-size: 1.3em;
+}
+
+/* ########## media query ########## */
+@media only screen and (max-width: 768px) {
+  .dashboard-heading{
+    font-size: 1.2em !important;
+  }
+
+  #accordionSidebar{
+    width: 100px !important;
+  }
 }
