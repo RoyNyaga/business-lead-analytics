@@ -1,8 +1,11 @@
 <div class="container-fluid">
+  <div class="my-4">
+    <%= link_to business_path(@goal.business) do %>
+      <%= render "shared/buttons/back-icon"%>
+    <% end %>
+  </div>
   <div class="row goal-info">
-    <div class="col-md-2">
-      <%= render partial: "weekly_data_entries/modal", locals: { weekly_data_entry: @weekly_data_entry, id_suffix: 0 } %>
-    </div>
+    <div class="col-md-1"></div>
     <div class="col-md-3">
       <div class="card shadow">
         <div class="card-header py-2">
@@ -11,9 +14,9 @@
         <div class="card-body px-3">
           <p><strong>Name:</strong> <%= @goal.quater_name %></p>
           <p><strong>Projected Leads:</strong> <%= @goal.projected_leads %></p>
-          <p><strong>Budget:</strong> <%= @goal.budget %></p>
-          <p><strong>Projected Conversion Rate:</strong> <%= @goal.projected_conversion_rate %></p>
-          <p><strong>Projected Revenue:</strong> <%= @goal.projected_revenue %></p>
+          <p><strong>Budget:</strong> $ <%= @goal.budget %></p>
+          <p><strong>Projected Conversion Rate:</strong> <%= @goal.projected_conversion_rate %> %</p>
+          <p><strong>Projected Revenue:</strong> $ <%= @goal.projected_revenue %></p>
         </div>
       </div>
     </div>
@@ -40,6 +43,12 @@
           <% end %>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+      <%= render partial: "weekly_data_entries/modal", locals: { weekly_data_entry: @weekly_data_entry, id_suffix: 0 } %>
     </div>
   </div>
   <div class="my-5">

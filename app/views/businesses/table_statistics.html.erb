@@ -25,9 +25,9 @@
               <td><%= goal.actual_leads %></td>
               <td><%= goal.lead_difference %></td>
               <td><%= goal.abandoned_leads %></td>
-              <td><%= goal.conversion_rate %></td>
-              <td><%= goal.budget %></td>
-              <td><%= goal.revenue %></td>
+              <td><%= goal.conversion_rate.round(2) %> %</td>
+              <td> $ <%= goal.budget %></td>
+              <td> $ <%= goal.revenue %></td>
             </tr>
           <% end %>
         </tbody>

@@ -31,7 +31,7 @@
               </td>
               <td><%= data.contacted_leads %> </td>
               <td><%= data.paid_customers %></td>
-              <td><%= data.conversion_rate %> %</td>
+              <td><%= data.conversion_rate.round(2) %> %</td>
               <td>$ <%= data.budget_expences %></td>
               <td>$ <%= data.revenue %></td>
               <td>
