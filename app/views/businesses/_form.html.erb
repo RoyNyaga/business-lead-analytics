@@ -24,7 +24,7 @@
 
     <div class="col-md-6">
       <%= form.label :industry_id, style: "display: block" %>
-      <%= form.collection_select :industry_id, Industry.all, :id, :name, prompt: true, class: "form-control", required: true %>
+      <%= form.collection_select :industry_id, Industry.all.order(:name), :id, :name, prompt: true, class: "form-control", required: true %>
     </div>
 
     <div>

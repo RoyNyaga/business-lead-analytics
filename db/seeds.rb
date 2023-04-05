@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 industries = ["Transport Operations", "Transport Structural Repair and Refinishing", "Transport Systems Diagnostics and Service", "Public Safety", "Emergency Response", "Legal Practices", "Marketing",
-  "Professional Sales", "Entrepreneurship/Self-Employment", "Marketing", "Professional Sales",  "Entrepreneurship/Self-Employment", "Information Support and Services Networking", "Software and Systems Development", "Games and Simulation", "Food Science, Dietetics, and Nutrition",
+  "Professional Sales", "Entrepreneurship/Self-Employment", "Marketing", "Professional Sales",  "Entrepreneurship/Self-Employment", "Information Technology", "Software and Systems Development", "Games and Simulation", "Food Science, Dietetics, and Nutrition",
   "Food Service and Hospitality", "Hospitality, Tourism, and Recreation", "Biotechnology",
   "Patient Care", "Healthcare Administrative Services", "Healthcare Operational Support Services",
   "Public and Community Health", "Mental and Behavioral Health", "Fashion Design, and Merchandising",
