@@ -4,5 +4,13 @@ class Channel < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { scope: :business_id, 
     message: ": Channel already Exist." }
+  
+  before_save :strip_out_white_spaces
+
+  private
+
+  def strip_out_white_spaces
+    self.name = name.strip
+  end
 
 end
