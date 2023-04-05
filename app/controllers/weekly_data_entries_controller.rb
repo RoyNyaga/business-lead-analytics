@@ -26,6 +26,14 @@ class WeeklyDataEntriesController < ApplicationController
     end
   end
 
+  def destroy
+    @weekly_data_entry = WeeklyDataEntry.find_by(id: params[:id])
+    @goal = @weekly_data_entry.goal
+    @weekly_data_entry.destroy
+    flash[:alert] = "Data Entry was successfully deleted"
+    redirect_to @goal
+  end
+
   private 
 
   def weekly_data_entry_params

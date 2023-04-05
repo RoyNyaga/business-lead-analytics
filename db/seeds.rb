@@ -20,6 +20,7 @@ industries = ["Transport Operations", "Transport Structural Repair and Refinishi
   "Design, Visual, and Media Arts", "Performing Arts", "Production and Managerial Arts",
   "Game Design and Integration", "Agriculture and Natural Resources"]
 
+
   industries.each do |industry|
     Industry.create(name: industry)
   end

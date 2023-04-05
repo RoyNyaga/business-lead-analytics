@@ -39,8 +39,11 @@
                   <p><%= hash.keys.first %> : <%= hash.values.first %></p>
                 <% end %>
               </td>
-              <td>
+              <td class="d-flex justify-content-between">
                 <%= render partial: "weekly_data_entries/modal", locals: { weekly_data_entry: data, id_suffix: data.id }%>
+                <%= link_to weekly_data_entry_path(data), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "general-delete-link" do %>
+                  <i class="bi bi-x-circle"></i>
+                <% end %>
               </td>
             </tr>
           <% end %>

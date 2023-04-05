@@ -1,0 +1,13 @@
+industry = ["Transport Operations", "Transport Structural Repair and Refinishing", "Transport Systems Diagnostics and Service", "Public Safety", "Emergency Response", "Legal Practices", "Marketing",
+  "Professional Sales", "Entrepreneurship/Self-Employment", "Marketing", "Professional Sales",  "Entrepreneurship/Self-Employment", "Information Support and Services Networking", "Software and Systems Development", "Games and Simulation", "Food Science, Dietetics, and Nutrition",
+  "Food Service and Hospitality", "Hospitality, Tourism, and Recreation", "Biotechnology",
+  "Patient Care", "Healthcare Administrative Services", "Healthcare Operational Support Services",
+  "Public and Community Health", "Mental and Behavioral Health", "Fashion Design, and Merchandising",
+  "Interior Design, Furnishings, and Maintenance", "Personal Services", "Architectural Design",
+  "Engineering Technology", "Engineering Design", "Environmental Engineering", "Energy and Power Technology", "Environmental Resources", "Telecommunications", "Child Development",
+  "Consumer Services", "Education", "Family and Human Services",
+  "Business Management", "Financial Services", "International Business",
+  "Cabinetry, Millwork, and Woodworking", "Engineering and Heavy Construction",
+  "Mechanical Systems Installation and Repair", "Residential and Commercial Construction",
+  "Design, Visual, and Media Arts", "Performing Arts", "Production and Managerial Arts",
+  "Game Design and Integration", "Agriculture and Natural Resources"]

@@ -1,8 +1,13 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#weeklyDataEntry-<%= id_suffix %>">
-  <%= action_text(weekly_data_entry) %> Weekly Entry
-</button>
-
+<% if weekly_data_entry.persisted? %>
+  <button type="button" class="edit-link-yellow" data-bs-toggle="modal" data-bs-target="#weeklyDataEntry-<%= id_suffix %>">
+    <i class="bi bi-pencil-square"></i>
+  </button>
+<% else %>
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#weeklyDataEntry-<%= id_suffix %>">
+    <%= action_text(weekly_data_entry) + " Weekly Entry" %>
+  </button>
+  <% end %>
 <!-- Modal -->
 <div class="modal fade" id="weeklyDataEntry-<%= id_suffix %>" tabindex="-1" aria-labelledby="weeklyDataEntryLabel-<%= id_suffix %>" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
