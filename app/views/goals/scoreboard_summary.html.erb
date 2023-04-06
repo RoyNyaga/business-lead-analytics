@@ -2,7 +2,6 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800 my-5 dashboard-heading">Scoreboard Summary - <%= @goal.unique_code %></h1>
-
     <%= form_with url: scoreboard_summary_goal_path, method: :get do |form| %>
       <%= form.collection_select :select_id, @goal.business.goals, :id, :unique_code %>
       <%= form.submit "Apply", class: "btn btn-success my-2" %>
@@ -16,8 +15,8 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                Actual ( Vs Budget )</div>
+              <div class="text-xs font-weight-bolder scoreboard-colored-text-size text-primary text-uppercase mb-1">
+                Actual Vs projected leads</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @goal.actual_leads %></div>
               <div class="h5 mb-0 font-weight-bold text-primary-500 float-right"><%= @goal.projected_leads %></div>
             </div>
@@ -34,7 +33,7 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+              <div class="text-xs font-weight-bold scoreboard-colored-text-size text-success text-uppercase mb-1">
                 Surplus / Deficit</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @goal.lead_difference %></div>
             </div>
@@ -51,7 +50,7 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Goal Progress
+              <div class="text-xs font-weight-bold text-info scoreboard-colored-text-size text-uppercase mb-1">Goal Progress
               </div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
@@ -79,7 +78,7 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+              <div class="text-xs font-weight-bold scoreboard-colored-text-size text-warning text-uppercase mb-1">
                 Conversion Rate</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @goal.conversion_rate.round(2) %> %</div>
             </div>
@@ -93,15 +92,17 @@
   </div>
   <!-- Content Row -->
   <div class="row">
-    <!-- Area Chart- Leads Overview -->
-    <div class="col-md-8 mb-4">
-      <!-- Revenue - Add Chart For Revenue Here -->
+    <div class="col-xl-8 col-lg-7">
       <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold" style="color: black;">Revenue</h6>
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold" style="color: rgb(0, 0, 0);">Leads Overview</h6>
         </div>
+        <!-- Card Body -->
         <div class="card-body">
-          <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
+          <div class="chart-area">
+            <%= line_chart(@weekly_data_entries.pluck(:date, :leads_per_week).to_h) %>
+          </div>
         </div>
       </div>
     </div>
@@ -140,17 +141,14 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-8 col-lg-7">
+    <div class="col-md-8 mb-4">
+      <!-- Revenue - Add Chart For Revenue Here -->
       <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold" style="color: rgb(0, 0, 0);">Leads Overview</h6>
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold" style="color: black;">Revenue</h6>
         </div>
-        <!-- Card Body -->
         <div class="card-body">
-          <div class="chart-area">
-            <%= line_chart(@weekly_data_entries.pluck(:date, :leads_per_week).to_h) %>
-          </div>
+          <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
         </div>
       </div>
     </div>
