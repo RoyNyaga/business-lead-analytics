@@ -1,4 +1,5 @@
 $robotoFonts: 'Roboto', sans-serif;
+$mainBackgroundColor: #047d57;
 
 #error_explanation {
   border: 2px solid red;
@@ -380,6 +381,10 @@ footer.footer {
 .score-borad-tag{
   font-weight: 800;
   font-size: 1.3em;
+}
+
+.background-green{
+  background-color: $mainBackgroundColor;
 }
 
 /* ########## media query ########## */
