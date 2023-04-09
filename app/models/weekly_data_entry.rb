@@ -75,6 +75,31 @@ class WeeklyDataEntry < ApplicationRecord
     product_leads_array_of_hashes.reduce(Hash.new) { |main_hash, other_hash| main_hash.merge(other_hash) }
   end
 
+  def self.goal_ids(data_entries)
+    data_entries.map(&:goal_id).uniq
+  end
+
+  def self.yearly_actual_leads(data_entries)
+    Goal.where(id: self.goal_ids(data_entries)).map(&:actual_leads).sum
+  end
+
+  def self.yearly_project_leads(data_entries)
+    Goal.where(id: self.goal_ids(data_entries)).map(&:projected_leads)
+  end
+
+  def self.yearly_lead_difference(data_entries)
+    self.yearly_actual_leads(data_entries) - self.yearly_project_leads(data_entries)
+  end
+
+  def selfyearly_lead_progress(data_entries)
+    progress = (self.yearly_actual_leads(data_entries).to_f / self.year_projected_leads(data_entries).to_f) * 100
+    progress.round
+  end
+
+  def self.yearly_conversion_rate(data_entries)
+    data_entries.map(&:conversion_rate).sum / data_entries.count
+  end
+
   private 
 
   def update_related_goal_attributes
