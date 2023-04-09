@@ -20,5 +20,9 @@ Rails.application.routes.draw do
     end
   end
   resources :products
-  resources :weekly_data_entries
+  resources :weekly_data_entries do
+    collection do
+      get :form_error_page
+    end
+  end
 end

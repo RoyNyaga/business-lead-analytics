@@ -1,0 +1,12 @@
+<div class="container-fluid bg-light" style="height: 100vh;">
+  <div class="py-5">
+    <%= link_to goal_path(@goal) do %>
+    <%= render "shared/buttons/back-icon"%>
+  <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <%= render partial: "weekly_data_entries/form", locals: { weekly_data_entry: @weekly_data_entry, btn_text: "update" } %>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,14 @@ class WeeklyDataEntry < ApplicationRecord
   before_save :set_leads_per_week, :set_conversion_rate
   after_save :update_related_goal_attributes
 
+  validate :validate_product_channel_leads_equality
+
+  scope :business_yearly_data, -> (business_id, date) { where("date >= '#{date.beginning_of_year}' AND date <= '#{date.end_of_year}'") }
+
+  def validate_product_channel_leads_equality
+    errors.add(:channel_leads_and_product_leads, "Product Leads should equal Channel leads") unless sum_weekly_channel_leads == sum_weekly_product_leads
+  end
+
   def parse_channel_leads(params)
     leads_per_channel = []
     business.channels.each do |channel|
@@ -18,6 +26,11 @@ class WeeklyDataEntry < ApplicationRecord
   def sum_weekly_channel_leads
     parsed_channels = self.channel_leads_per_week.map{ |c| eval(c) }
     parsed_channels.map{ |c| c.values.first.to_i }.sum
+  end
+
+  def sum_weekly_product_leads
+    parsed_products = self.product_leads_per_week.map{ |c| eval(c) }
+    parsed_products.map{ |c| c.values.first.to_i }.sum
   end
 
   def set_leads_per_week

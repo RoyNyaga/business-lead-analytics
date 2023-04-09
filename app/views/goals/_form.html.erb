@@ -1,40 +1,35 @@
 <%= form_with(model: goal) do |form| %>
   <div class="row dark-faint">
-  <% if goal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this Goal from being saved:</h2>
-      <ul>
-        <% goal.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% if goal.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(goal.errors.count, "error") %> prohibited this Goal from being saved:</h2>
+        <ul>
+          <% goal.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="col-md-6">
       <%= form.label :quater_name %>
       <%= form.select :quater_name, Goal::QUATER_OPTIONS, required: true, class: "form-control" %>
     </div>
-
     <div class="col-md-6">
       <%= form.label :projected_leads %>
       <%= form.text_field :projected_leads, required: true, class: "form-control" %>
     </div>
-
     <div class="col-md-6">
       <%= form.label :budget %>
       <%= form.number_field :budget, required: true, class: "form-control" %>
     </div>
-
     <div class="col-md-6">
       <%= form.label "Projected conversion rate ( % )" %>
       <%= form.number_field :projected_conversion_rate, class: "form-control" %>
     </div>
-
     <div class="col-md-12">
       <%= form.label :projected_revenue %>
       <%= form.number_field :projected_revenue, class: "form-control" %>
     </div>
-
     <div class="col-md-6">
       <h6 class="heading-fonts my-3">Channels</h6>
       <% @business.channels.each do |channel| %>
@@ -49,7 +44,6 @@
         </div>
       <% end %>
     </div>
-
     <div class="col-md-6">
       <h6 class="heading-fonts my-3">Products</h6>
       <% @business.products.each do |product| %>
@@ -64,10 +58,8 @@
         </div>
       <% end %>
     </div>
-
     <%= form.hidden_field :business_id, value: @business.id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
-
     <%= form.submit btn_text, class: "btn btn-success" %>
   </div>
 <% end %>

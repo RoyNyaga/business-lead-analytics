@@ -116,7 +116,9 @@
         <!-- Card Body -->
         <div class="card-body">
           <div class="chart-pie">
-            <%= pie_chart @goal.parse_channels_chart_data %>
+            <%#= pie_chart @goal.parse_channels_chart_data %>
+            <%= pie_chart({"FaceBook"=>56, "whats app"=>33}) %>
+
           </div>
         </div>
       </div>
