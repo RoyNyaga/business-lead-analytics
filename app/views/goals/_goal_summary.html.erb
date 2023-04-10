@@ -110,7 +110,7 @@
       <!-- Card Body -->
       <div class="card-body">
         <div class="chart-pie">
-          <%= pie_chart @goal.parse_channels_chart_data %>
+          <%= pie_chart @goal.parse_channels_chart_data(in_percentage: true), suffix: "%", donut: true %>
         </div>
       </div>
     </div>
@@ -126,7 +126,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Product / Service Performance</h6>
       </div>
       <div class="card-body">
-        <%= pie_chart @goal.parse_products_chart_data %>
+        <%= pie_chart @goal.parse_products_chart_data(in_percentage: true), suffix: "%", donut: true %>
       </div>
     </div>
     <!-- Colomn Space -->
@@ -142,7 +142,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Revenue</h6>
       </div>
       <div class="card-body">
-        <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
+        <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h, prefix: " $") %>
       </div>
     </div>
   </div>
@@ -164,7 +164,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Leads Vs Abandoned Leads</h6>
       </div>
       <div class="card-body">
-        <%= pie_chart(@goal.parse_leads_abandoned_leads_data) %>
+        <%= pie_chart(@goal.parse_leads_abandoned_leads_data(in_percentage: true), suffix: "%") %>
       </div>
     </div>
   </div>

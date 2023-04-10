@@ -137,7 +137,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Revenue</h6>
       </div>
       <div class="card-body">
-        <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
+        <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h, prefix: "$") %>
       </div>
     </div>
   </div>

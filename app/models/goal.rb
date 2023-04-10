@@ -75,27 +75,39 @@ class Goal < ApplicationRecord
     product_hash
   end
 
-  def parse_channels_chart_data
+  def parse_channels_chart_data(in_percentage: false)
     data_set = weekly_data_channel_initialize_hash
     weekly_data_entries.each do |data|
       data.channel_leads_hash.each do |key, value|
         data_set[key] += value.to_i if data_set[key].present?
       end
     end
+
+    in_percentage ? data_to_percentage(data_set) : data_set
+  end
+
+  def parse_leads_abandoned_leads_data(in_percentage: false)
+    data_set = { "Leads" => actual_leads, "Abondoned Leads" => abandoned_leads }
+    in_percentage ? data_to_percentage(data_set) : data_set
+  end
+
+  def data_to_percentage(data_set)
+    sum = data_set.values.sum.to_f
+    data_set.each do |key, value|
+      data_set[key] = ((value.to_f/sum) * 100).round(2)
+    end
+
     data_set
   end
 
-  def parse_leads_abandoned_leads_data
-    { "Leads" => actual_leads, "Abondoned Leads" => abandoned_leads }
-  end
-
-  def parse_products_chart_data
+  def parse_products_chart_data(in_percentage: false)
     data_set = weekly_data_product_initialize_hash
     weekly_data_entries.each do |data|
       data.product_leads_hash.each do |key, value|
         data_set[key] += value.to_i if data_set[key].present?
       end
     end
-    data_set
+
+    in_percentage ? data_to_percentage(data_set) : data_set
   end
 end
