@@ -1,0 +1,4 @@
+<%= form_with url: scoreboard_summary_goal_path, method: :get do |form| %>
+  <%= select_year(Date.today, start_year: 2020, end_year: Time.now.year) %>
+  <%= form.submit "Apply", class: "btn btn-success my-2" %>
+<% end %>

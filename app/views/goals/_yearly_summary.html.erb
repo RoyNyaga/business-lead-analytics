@@ -1,0 +1,175 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800 my-5 dashboard-heading"><%= scoreboard_title(@report_type, year: nil, goal: @goal) %></h1>
+  <%= form_with url: scoreboard_summary_goal_path, method: :get do |form| %>
+    <%= form.collection_select :select_id, @goal.business.goals, :id, :unique_code %>
+    <%= form.submit "Apply", class: "btn btn-success my-2" %>
+  <% end %>
+</div>
+<!-- Content Row -->
+<div class="row">
+  <!-- Actual Vs Budget Card -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bolder scoreboard-colored-text-size text-primary text-uppercase mb-1">
+              Actual Vs projected leads</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @goal.actual_leads %></div>
+            <div class="h5 mb-0 font-weight-bold text-primary-500 float-right"><%= @goal.projected_leads %></div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-angle-up fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Surplus / Deficit -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold scoreboard-colored-text-size text-success text-uppercase mb-1">
+              Surplus / Deficit</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @goal.lead_difference %></div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-chart-area fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Goal Progress -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info scoreboard-colored-text-size text-uppercase mb-1">Goal Progress
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @goal.lead_progress.round(2) %> %</div>
+              </div>
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: <%= @goal.lead_progress %>%" aria-valuenow="<%= @goal.lead_progress %>" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Conversion Rate -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold scoreboard-colored-text-size text-warning text-uppercase mb-1">
+              Conversion Rate</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @goal.conversion_rate.round(2) %> %</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-circle fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Content Row -->
+<div class="row">
+  <div class="col-xl-8 col-lg-7">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold" style="color: rgb(0, 0, 0);">Leads Overview</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <div class="chart-area">
+          <%= line_chart(@weekly_data_entries.pluck(:date, :leads_per_week).to_h) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Pie Chart- Lead Sources -->
+  <div class="col-xl-4 col-lg-5">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold" style="color: black;">Leads Sources</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <div class="chart-pie">
+          <%= pie_chart @goal.parse_channels_chart_data %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Content Row -->
+<div class="row">
+  <!-- Content Column -->
+  <div class="col-md-4 mb-4">
+    <!-- Product / Service Performance -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold" style="color: black;">Product / Service Performance</h6>
+      </div>
+      <div class="card-body">
+        <%= pie_chart @goal.parse_products_chart_data %>
+      </div>
+    </div>
+    <!-- Colomn Space -->
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 mb-4">
+    <!-- Revenue - Add Chart For Revenue Here -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold" style="color: black;">Revenue</h6>
+      </div>
+      <div class="card-body">
+        <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 mb-4">
+    <!-- Revenue - Add Chart For Revenue Here -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold" style="color: black;">Paid Customers Over Time</h6>
+      </div>
+      <div class="card-body">
+        <%= column_chart(@weekly_data_entries.pluck(:date, :paid_customers)) %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <!-- Revenue - Add Chart For Revenue Here -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold" style="color: black;">Leads Vs Abandoned Leads</h6>
+      </div>
+      <div class="card-body">
+        <%= pie_chart(@goal.parse_leads_abandoned_leads_data) %>
+      </div>
+    </div>
+  </div>
+</div>

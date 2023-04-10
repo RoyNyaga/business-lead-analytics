@@ -1,5 +1,12 @@
-<% if @report_type == "goal" %>
-  <%= render "goal_summary" %>
-<% else %>
-  <%= render "yearly_summary" %>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 col-md-2 px-2"><%= "goals/goal_select_form" %></div>
+    <div class="col-md-8"></div>
+    <div class="col-6 col-md-2 px-2"><%= "goals/year_select_form" %></div>
+  </div>
+  <% if @report_type == "goal" %>
+    <%= render "goal_summary" %>
+  <% else %>
+    <%= render "yearly_summary" %>
+  <% end %>
+</div>
