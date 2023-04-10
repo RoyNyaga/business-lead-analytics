@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800 my-5 dashboard-heading">Scoreboard Summary - <%= @goal.unique_code %></h1>
+    <h1 class="h3 mb-0 text-gray-800 my-5 dashboard-heading"><%= scoreboard_title(@report_type, year: nil, goal: @goal) %></h1>
     <%= form_with url: scoreboard_summary_goal_path, method: :get do |form| %>
       <%= form.collection_select :select_id, @goal.business.goals, :id, :unique_code %>
       <%= form.submit "Apply", class: "btn btn-success my-2" %>
