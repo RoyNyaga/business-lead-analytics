@@ -83,6 +83,10 @@ class WeeklyDataEntry < ApplicationRecord
     Goal.where(id: self.goal_ids(data_entries)).map(&:actual_leads).sum
   end
 
+  def self.yearly_contacted_leads(data_entries)
+    data_entries.map(&:contacted_leads).sum
+  end
+
   def self.yearly_project_leads(data_entries)
     Goal.where(id: self.goal_ids(data_entries)).map(&:projected_leads)
   end
@@ -132,6 +136,24 @@ class WeeklyDataEntry < ApplicationRecord
       end
     end
     product_hash
+  end
+
+  def self.parse_products_chart_data(data_entries)
+    data_set = self.yearly_data_product_initialize_hash(data_entries)
+    data_entries.each do |data|
+      data.product_leads_hash.each do |key, value|
+        data_set[key] += value.to_i if data_set[key].present?
+      end
+    end
+    data_set
+  end
+
+  def self.yearly_abandoned_leads(data_entries)
+    self.yearly_actual_leads(data_entries) - self.yearly_contacted_leads(data_entries)
+  end
+
+  def parse_yearly_leads_abandoned_leads_data(data_entries)
+    { "Leads" => self.year_actual_leads(data_entries), "Abondoned Leads" => self.yearly_abandoned_leads(data_entries) }
   end
 
   private 
