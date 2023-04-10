@@ -87,16 +87,16 @@ class WeeklyDataEntry < ApplicationRecord
     data_entries.map(&:contacted_leads).sum
   end
 
-  def self.yearly_project_leads(data_entries)
-    Goal.where(id: self.goal_ids(data_entries)).map(&:projected_leads)
+  def self.yearly_projected_leads(data_entries)
+    Goal.where(id: self.goal_ids(data_entries)).map(&:projected_leads).sum
   end
 
   def self.yearly_lead_difference(data_entries)
-    self.yearly_actual_leads(data_entries) - self.yearly_project_leads(data_entries)
+    self.yearly_actual_leads(data_entries) - self.yearly_projected_leads(data_entries)
   end
 
   def self.yearly_lead_progress(data_entries)
-    progress = (self.yearly_actual_leads(data_entries).to_f / self.year_projected_leads(data_entries).to_f) * 100
+    progress = (self.yearly_actual_leads(data_entries).to_f / self.yearly_projected_leads(data_entries).to_f) * 100
     progress.round
   end
 
