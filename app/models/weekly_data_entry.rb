@@ -106,7 +106,7 @@ class WeeklyDataEntry < ApplicationRecord
 
   def self.yearly_data_channel_initialize_hash(data_entries)
     channel_hash = Hash.new
-    date_to_query = data_entries.first.data
+    date_to_query = data_entries.first.date
     goals = Goal.where("created_at >= '#{date_to_query.beginning_of_year}' AND created_at <= '#{date_to_query.end_of_year}'")
     goals.each do |goal|
       goal.channels.split("-#-").map(&:strip).each do |channel|
@@ -128,7 +128,7 @@ class WeeklyDataEntry < ApplicationRecord
 
   def self.yearly_data_product_initialize_hash(data_entries)
     product_hash = Hash.new
-    date_to_query = data_entries.first.data
+    date_to_query = data_entries.first.date
     goals = Goal.where("created_at >= '#{date_to_query.beginning_of_year}' AND created_at <= '#{date_to_query.end_of_year}'")
     goals.each do |goal|
       goal.products.split("-#-").map(&:strip).each do |product|
@@ -138,7 +138,7 @@ class WeeklyDataEntry < ApplicationRecord
     product_hash
   end
 
-  def self.parse_products_chart_data(data_entries)
+  def self.yearly_parse_products_chart_data(data_entries)
     data_set = self.yearly_data_product_initialize_hash(data_entries)
     data_entries.each do |data|
       data.product_leads_hash.each do |key, value|
@@ -152,8 +152,8 @@ class WeeklyDataEntry < ApplicationRecord
     self.yearly_actual_leads(data_entries) - self.yearly_contacted_leads(data_entries)
   end
 
-  def parse_yearly_leads_abandoned_leads_data(data_entries)
-    { "Leads" => self.year_actual_leads(data_entries), "Abondoned Leads" => self.yearly_abandoned_leads(data_entries) }
+  def self.parse_yearly_leads_abandoned_leads_data(data_entries)
+    { "Leads" => self.yearly_actual_leads(data_entries), "Abondoned Leads" => self.yearly_abandoned_leads(data_entries) }
   end
 
   private 

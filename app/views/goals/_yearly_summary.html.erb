@@ -74,7 +74,7 @@
           <div class="col mr-2">
             <div class="text-xs font-weight-bold scoreboard-colored-text-size text-warning text-uppercase mb-1">
               Conversion Rate</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= WeeklyDataEntry.yearly_conversion_rate.round(2) %> %</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= WeeklyDataEntry.yearly_conversion_rate(@weekly_data_entries).round(2) %> %</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-circle fa-2x text-gray-300"></i>
@@ -95,7 +95,7 @@
       <!-- Card Body -->
       <div class="card-body">
         <div class="chart-area">
-          <%#= line_chart(@weekly_data_entries.pluck(:date, :leads_per_week).to_h) %>
+          <%= line_chart(@weekly_data_entries.pluck(:date, :leads_per_week).to_h) %>
         </div>
       </div>
     </div>
@@ -110,7 +110,7 @@
       <!-- Card Body -->
       <div class="card-body">
         <div class="chart-pie">
-          <%#= pie_chart @goal.parse_channels_chart_data %>
+          <%= pie_chart WeeklyDataEntry.yearly_parse_channels_chart_data(@weekly_data_entries) %>
         </div>
       </div>
     </div>
@@ -126,7 +126,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Product / Service Performance</h6>
       </div>
       <div class="card-body">
-        <%#= pie_chart @goal.parse_products_chart_data %>
+        <%= pie_chart WeeklyDataEntry.yearly_parse_products_chart_data(@weekly_data_entries) %>
       </div>
     </div>
     <!-- Colomn Space -->
@@ -142,7 +142,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Revenue</h6>
       </div>
       <div class="card-body">
-        <%#= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
+        <%= area_chart(@weekly_data_entries.pluck(:date, :revenue).to_h) %>
       </div>
     </div>
   </div>
@@ -153,7 +153,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Paid Customers Over Time</h6>
       </div>
       <div class="card-body">
-        <%#= column_chart(@weekly_data_entries.pluck(:date, :paid_customers)) %>
+        <%= column_chart(@weekly_data_entries.pluck(:date, :paid_customers)) %>
       </div>
     </div>
   </div>
@@ -164,7 +164,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Leads Vs Abandoned Leads</h6>
       </div>
       <div class="card-body">
-        <%#= pie_chart(@goal.parse_leads_abandoned_leads_data) %>
+        <%= pie_chart(WeeklyDataEntry.parse_yearly_leads_abandoned_leads_data(@weekly_data_entries)) %>
       </div>
     </div>
   </div>
