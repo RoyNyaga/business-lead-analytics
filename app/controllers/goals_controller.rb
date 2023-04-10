@@ -45,9 +45,12 @@ class GoalsController < ApplicationController
     if params[:select_id].present?
       @goal = Goal.find_by(id: params[:select_id])
       @weekly_data_entries = @goal.weekly_data_entries
+      @report_type = "goal"
     elsif params[:yearly_report] == "true"
       @weekly_data_entries = WeeklyDataEntries.business_yearly_data(params[:business_id], params[:date].to_date)
+      @report_type = "yearly"
     else
+      @report_type = "goal"
       @weekly_data_entries = @goal.weekly_data_entries
     end
   end
