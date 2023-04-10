@@ -116,14 +116,15 @@ class WeeklyDataEntry < ApplicationRecord
     channel_hash
   end
 
-  def self.yearly_parse_channels_chart_data(data_entries)
+  def self.yearly_parse_channels_chart_data(data_entries, in_percentage: false)
     data_set = self.yearly_data_channel_initialize_hash(data_entries)
     data_entries.each do |data|
       data.channel_leads_hash.each do |key, value|
         data_set[key] += value.to_i if data_set[key].present?
       end
     end
-    data_set
+
+    in_percentage ? self.data_to_percentage(data_set) : data_set
   end
 
   def self.yearly_data_product_initialize_hash(data_entries)
@@ -135,16 +136,27 @@ class WeeklyDataEntry < ApplicationRecord
         product_hash[product] = 0
       end
     end
+    
     product_hash
   end
 
-  def self.yearly_parse_products_chart_data(data_entries)
+  def self.yearly_parse_products_chart_data(data_entries, in_percentage: false)
     data_set = self.yearly_data_product_initialize_hash(data_entries)
     data_entries.each do |data|
       data.product_leads_hash.each do |key, value|
         data_set[key] += value.to_i if data_set[key].present?
       end
     end
+
+    in_percentage ? self.data_to_percentage(data_set) : data_set
+  end
+
+  def self.data_to_percentage(data_set)
+    sum = data_set.values.sum.to_f
+    data_set.each do |key, value|
+      data_set[key] = ((value.to_f/sum) * 100).round(2)
+    end
+
     data_set
   end
 
