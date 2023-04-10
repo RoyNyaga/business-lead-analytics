@@ -7,7 +7,7 @@ module ApplicationHelper
     if report_type == "goal"
       "Scoreboard Summary - #{goal.unique_code}"
     else
-      "Scoreboard Summary for the year #{year}"
+      "Scoreboard Summary For The Year #{year}"
     end
   end
 end

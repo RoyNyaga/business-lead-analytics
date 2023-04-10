@@ -4,9 +4,13 @@
     <div class="col-md-8"></div>
     <div class="col-6 col-md-2 px-2"><%= render "goals/year_select_form" %></div>
   </div>
-  <% if @report_type == "goal" %>
-    <%= render "goals/goal_summary" %>
+  <% if @weekly_data_entries.present? %>
+    <% if @report_type == "goal" %>
+      <%= render "goals/goal_summary" %>
+    <% else %>
+      <%= render "goals/yearly_summary" %>
+    <% end %>
   <% else %>
-    <%= render "goals/yearly_summary" %>
+    <%= render "goals/no_data" %>
   <% end %>
 </div>
