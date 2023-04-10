@@ -46,7 +46,7 @@ class GoalsController < ApplicationController
       @goal = Goal.find_by(id: params[:select_id])
       @weekly_data_entries = @goal.weekly_data_entries
       @report_type = "goal"
-    elsif params[:yearly_report] == "true"
+    elsif params[:report_type] == "yearly"
       @weekly_data_entries = WeeklyDataEntries.business_yearly_data(params[:business_id], params[:date].to_date)
       @report_type = "yearly"
     else
