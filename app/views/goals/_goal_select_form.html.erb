@@ -1,0 +1,4 @@
+<%= form_with url: scoreboard_summary_goal_path, method: :get do |form| %>
+  <%= form.collection_select :select_id, @goal.business.goals, :id, :unique_code %>
+  <%= form.submit "Apply", class: "btn btn-success my-2" %>
+<% end %>
