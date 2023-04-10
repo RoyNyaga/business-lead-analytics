@@ -91,13 +91,47 @@ class WeeklyDataEntry < ApplicationRecord
     self.yearly_actual_leads(data_entries) - self.yearly_project_leads(data_entries)
   end
 
-  def selfyearly_lead_progress(data_entries)
+  def self.yearly_lead_progress(data_entries)
     progress = (self.yearly_actual_leads(data_entries).to_f / self.year_projected_leads(data_entries).to_f) * 100
     progress.round
   end
 
   def self.yearly_conversion_rate(data_entries)
     data_entries.map(&:conversion_rate).sum / data_entries.count
+  end
+
+  def self.yearly_data_channel_initialize_hash(data_entries)
+    channel_hash = Hash.new
+    date_to_query = data_entries.first.data
+    goals = Goal.where("created_at >= '#{date_to_query.beginning_of_year}' AND created_at <= '#{date_to_query.end_of_year}'")
+    goals.each do |goal|
+      goal.channels.split("-#-").map(&:strip).each do |channel|
+        channel_hash[channel] = 0
+      end
+    end
+    channel_hash
+  end
+
+  def self.yearly_parse_channels_chart_data(data_entries)
+    data_set = self.yearly_data_channel_initialize_hash(data_entries)
+    data_entries.each do |data|
+      data.channel_leads_hash.each do |key, value|
+        data_set[key] += value.to_i if data_set[key].present?
+      end
+    end
+    data_set
+  end
+
+  def self.yearly_data_product_initialize_hash(data_entries)
+    product_hash = Hash.new
+    date_to_query = data_entries.first.data
+    goals = Goal.where("created_at >= '#{date_to_query.beginning_of_year}' AND created_at <= '#{date_to_query.end_of_year}'")
+    goals.each do |goal|
+      goal.products.split("-#-").map(&:strip).each do |product|
+        product_hash[product] = 0
+      end
+    end
+    product_hash
   end
 
   private 
