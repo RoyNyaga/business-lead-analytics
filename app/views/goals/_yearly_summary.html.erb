@@ -110,7 +110,7 @@
       <!-- Card Body -->
       <div class="card-body">
         <div class="chart-pie">
-          <%= pie_chart WeeklyDataEntry.yearly_parse_channels_chart_data(@weekly_data_entries, in_percentage: true), suffix: "%" %>
+          <%= pie_chart WeeklyDataEntry.yearly_parse_channels_chart_data(@weekly_data_entries, in_percentage: true), suffix: "%", donut: true %>
         </div>
       </div>
     </div>
@@ -126,7 +126,7 @@
         <h6 class="m-0 font-weight-bold" style="color: black;">Product / Service Performance</h6>
       </div>
       <div class="card-body">
-        <%= pie_chart WeeklyDataEntry.yearly_parse_products_chart_data(@weekly_data_entries, in_percentage: true), suffix: "%" %>
+        <%= pie_chart WeeklyDataEntry.yearly_parse_products_chart_data(@weekly_data_entries, in_percentage: true), suffix: "%", donut: true %>
       </div>
     </div>
   </div>
