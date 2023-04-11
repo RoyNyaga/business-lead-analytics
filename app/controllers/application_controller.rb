@@ -4,10 +4,14 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    if resource.businesses.size == 0
-      stored_location_for(resource) || new_business_path
+    if resource.is_a?(AdminUser)
+      stored_location_for(resource) || admin_root_path
     else
-      stored_location_for(resource) || business_path(resource.businesses.first)
+      if resource.businesses.size == 0
+        stored_location_for(resource) || new_business_path
+      else
+        stored_location_for(resource) || business_path(resource.businesses.first)
+      end
     end
   end
 
