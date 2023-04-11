@@ -106,13 +106,16 @@ class WeeklyDataEntry < ApplicationRecord
 
   def self.yearly_data_channel_initialize_hash(data_entries)
     channel_hash = Hash.new
-    date_to_query = data_entries.first.date
-    goals = Goal.where("created_at >= '#{date_to_query.beginning_of_year}' AND created_at <= '#{date_to_query.end_of_year}'")
+    data_entry = data_entries.first
+    date_to_query = data_entry.date
+    @business_id = data_entry.business_id
+    goals = Goal.where("business_id = #{@business_id} AND created_at >= '#{date_to_query.beginning_of_year}' AND created_at <= '#{date_to_query.end_of_year}'")
     goals.each do |goal|
       goal.channels.split("-#-").map(&:strip).each do |channel|
         channel_hash[channel] = 0
       end
     end
+
     channel_hash
   end
 
@@ -129,8 +132,10 @@ class WeeklyDataEntry < ApplicationRecord
 
   def self.yearly_data_product_initialize_hash(data_entries)
     product_hash = Hash.new
-    date_to_query = data_entries.first.date
-    goals = Goal.where("created_at >= '#{date_to_query.beginning_of_year}' AND created_at <= '#{date_to_query.end_of_year}'")
+    data_entry = data_entries.first
+    date_to_query = data_entry.date
+    @business_id = data_entry.business_id 
+    goals = Goal.where("business_id = #{@business_id} AND created_at >= '#{date_to_query.beginning_of_year}' AND created_at <= '#{date_to_query.end_of_year}'")
     goals.each do |goal|
       goal.products.split("-#-").map(&:strip).each do |product|
         product_hash[product] = 0
