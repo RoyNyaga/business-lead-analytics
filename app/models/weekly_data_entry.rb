@@ -8,7 +8,7 @@ class WeeklyDataEntry < ApplicationRecord
 
   validate :validate_product_channel_leads_equality
 
-  scope :business_yearly_data, -> (business_id, date) { where("date >= '#{date.beginning_of_year}' AND date <= '#{date.end_of_year}'") }
+  scope :business_yearly_data, -> (business_id, date) { where("business_id = #{business_id} AND date >= '#{date.beginning_of_year}' AND date <= '#{date.end_of_year}'") }
 
   def validate_product_channel_leads_equality
     errors.add(:channel_leads_and_product_leads, "Product Leads should equal Channel leads") unless sum_weekly_channel_leads == sum_weekly_product_leads
@@ -136,7 +136,7 @@ class WeeklyDataEntry < ApplicationRecord
         product_hash[product] = 0
       end
     end
-    
+
     product_hash
   end
 

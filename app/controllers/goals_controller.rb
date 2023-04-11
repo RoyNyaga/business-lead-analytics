@@ -50,7 +50,7 @@ class GoalsController < ApplicationController
     elsif params[:report_type] == "yearly"
       @year = params[:date][:year]
       date = Date.new(@year.to_i, 1,1)
-      @weekly_data_entries = WeeklyDataEntry.business_yearly_data(params[:business_id], date)
+      @weekly_data_entries = WeeklyDataEntry.business_yearly_data(@goal.business_id, date)
       @report_type = "yearly"
       @selected_option = params[:date][:year]
     else
