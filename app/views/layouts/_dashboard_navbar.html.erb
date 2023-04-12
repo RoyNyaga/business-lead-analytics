@@ -10,7 +10,8 @@
     <li class="nav-item dropdown no-arrow">
       <div class="dropdown">
         <a class="dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-          <%= current_user.first_name %>
+          <span><%= current_user.first_name %></span>
+          <img style="width: 40px;" class="sidebar-card-illustration mx-2" src="/assets/undraw_profile-9bafc822646b3bd68527e91e2d74d980658945d7207091d77c13cf2ff2a8ef4c.svg">
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li> 
