@@ -6,13 +6,15 @@ class WeeklyDataEntry < ApplicationRecord
   before_save :set_leads_per_week, :set_conversion_rate
   after_save :update_related_goal_attributes
 
-  validate :validate_product_channel_leads_equality
+  validate :product_channel_leads_equality
 
   scope :business_yearly_data, -> (business_id, date) { where("business_id = #{business_id} AND date >= '#{date.beginning_of_year}' AND date <= '#{date.end_of_year}'") }
 
-  def validate_product_channel_leads_equality
+  def product_channel_leads_equality
     errors.add(:channel_leads_and_product_leads, "Product Leads should equal Channel leads") unless sum_weekly_channel_leads == sum_weekly_product_leads
   end
+
+  def validate_
 
   def parse_channel_leads(params)
     leads_per_channel = []
