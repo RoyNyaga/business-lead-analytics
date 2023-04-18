@@ -86,8 +86,8 @@ class Goal < ApplicationRecord
     in_percentage ? data_to_percentage(data_set) : data_set
   end
 
-  def parse_leads_abandoned_leads_data(in_percentage: false)
-    data_set = { "Leads" => actual_leads, "Abondoned Leads" => abandoned_leads }
+  def contacted_vs_abandoned_leads(in_percentage: false)
+    data_set = { "Contacted Leads" => contacted_leads, "Abondoned Leads" => abandoned_leads }
     in_percentage ? data_to_percentage(data_set) : data_set
   end
 
