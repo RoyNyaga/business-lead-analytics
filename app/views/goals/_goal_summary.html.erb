@@ -161,7 +161,7 @@
     <!-- Revenue - Add Chart For Revenue Here -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold" style="color: black;">Leads Vs Abandoned Leads</h6>
+        <h6 class="m-0 font-weight-bold" style="color: black;">Contacted Leads Vs Abandoned Leads</h6>
       </div>
       <div class="card-body">
         <%= pie_chart(@goal.contacted_vs_abandoned_leads(in_percentage: true), suffix: "%") %>

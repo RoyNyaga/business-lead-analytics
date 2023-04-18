@@ -156,10 +156,10 @@
     <!-- Revenue - Add Chart For Revenue Here -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold" style="color: black;">Leads Vs Abandoned Leads</h6>
+        <h6 class="m-0 font-weight-bold" style="color: black;">Contacted Leads Vs Abandoned Leads</h6>
       </div>
       <div class="card-body">
-        <%= pie_chart(WeeklyDataEntry.parse_yearly_leads_abandoned_leads_data(@weekly_data_entries, in_percentage: true), suffix: "%") %>
+        <%= pie_chart(WeeklyDataEntry.parse_yearly_contacted_vs_abandoned_leads(@weekly_data_entries, in_percentage: true), suffix: "%") %>
       </div>
     </div>
   </div>
