@@ -174,7 +174,7 @@ class WeeklyDataEntry < ApplicationRecord
       sum = (self.yearly_contacted_leads(data_entries) + self.yearly_abandoned_leads(data_entries)).to_f
       contacted_leads_percent = (self.yearly_contacted_leads(data_entries).to_f / sum) * 100
       abandoned_leads_percent = (self.yearly_abandoned_leads(data_entries).to_f / sum) * 100
-      { "Leads" => contacted_leads_percent.round(2), "Abondoned Leads" => abandoned_leads_percent.round(2)}
+      { "Contacted Leads" => contacted_leads_percent.round(2), "Abondoned Leads" => abandoned_leads_percent.round(2)}
     else
       { "Contacted Leads" => self.yearly_contacted_leads(data_entries), "Abondoned Leads" => self.yearly_abandoned_leads(data_entries) }
     end
