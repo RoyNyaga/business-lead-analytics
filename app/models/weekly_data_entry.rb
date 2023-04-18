@@ -169,14 +169,14 @@ class WeeklyDataEntry < ApplicationRecord
     self.yearly_actual_leads(data_entries) - self.yearly_contacted_leads(data_entries)
   end
 
-  def self.parse_yearly_leads_abandoned_leads_data(data_entries, in_percentage: false)
+  def self.parse_yearly_contacted_vs_abandoned_leads(data_entries, in_percentage: false)
     if in_percentage
-      sum = (self.yearly_actual_leads(data_entries) + self.yearly_abandoned_leads(data_entries)).to_f
-      actual_leads_percent = (self.yearly_actual_leads(data_entries).to_f / sum) * 100
+      sum = (self.yearly_contacted_leads(data_entries) + self.yearly_abandoned_leads(data_entries)).to_f
+      contacted_leads_percent = (self.yearly_contacted_leads(data_entries).to_f / sum) * 100
       abandoned_leads_percent = (self.yearly_abandoned_leads(data_entries).to_f / sum) * 100
-      { "Leads" => actual_leads_percent.round(2), "Abondoned Leads" => abandoned_leads_percent.round(2)}
+      { "Leads" => contacted_leads_percent.round(2), "Abondoned Leads" => abandoned_leads_percent.round(2)}
     else
-      { "Leads" => self.yearly_actual_leads(data_entries), "Abondoned Leads" => self.yearly_abandoned_leads(data_entries) }
+      { "Contacted Leads" => self.yearly_contacted_leads(data_entries), "Abondoned Leads" => self.yearly_abandoned_leads(data_entries) }
     end
   end
 
