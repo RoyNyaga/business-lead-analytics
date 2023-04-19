@@ -6,7 +6,7 @@ class WeeklyDataEntry < ApplicationRecord
   before_save :set_leads_per_week, :set_conversion_rate
   after_save :update_related_goal_attributes
 
-  validate :product_channel_leads_equality
+  validate :product_channel_leads_equality, :contacted_less_than_total_leads
 
   scope :business_yearly_data, -> (business_id, date) { where("business_id = #{business_id} AND date >= '#{date.beginning_of_year}' AND date <= '#{date.end_of_year}'") }
 
@@ -14,7 +14,9 @@ class WeeklyDataEntry < ApplicationRecord
     errors.add(:channel_leads_and_product_leads, "Product Leads should equal Channel leads") unless sum_weekly_channel_leads == sum_weekly_product_leads
   end
 
-  def validate_
+  def contacted_less_than_total_leads
+    errors.add(:contacted_leads, "Can not be greater than total leads") if contacted_leads > sum_weekly_channel_leads
+  end
 
   def parse_channel_leads(params)
     leads_per_channel = []
